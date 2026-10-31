@@ -104,16 +104,20 @@
       </div>
     </section>
 
-    <!-- WHAT WE MAKE (curated, no prices — bulk & gifting) -->
-    <section class="collection" id="collection">
-      <div class="border-strip" aria-hidden="true"></div>
-      <header class="sec-head center">
-        <p class="kicker">What we make</p>
-        <h2>A small range, <em>made in quantity.</em></h2>
-        <p class="sec-lede">We don't stock hundreds of products. We make a few things very well — and make them by the box, the hamper and the hundred, for your occasion.</p>
-      </header>
-      <ul class="range" id="range"><!-- rendered from js/data.js --></ul>
-      <p class="index-note">Every piece can be mixed into custom assortments, boxed for gifting and made in bulk. Quantities, packaging and pricing on enquiry.</p>
+    <!-- WHAT WE MAKE: real product photos on a 3D ring in the galaxy (js/showcase.js) -->
+    <section class="showcase" id="collection" aria-label="What we make">
+      <div class="show-stage">
+        <canvas class="show-canvas" id="showCanvas" aria-hidden="true"></canvas>
+        <div class="hero-veil" aria-hidden="true"></div>
+        <div class="show-panel">
+          <p class="kicker">What we make</p>
+          <p class="show-count"><b id="showNum">01</b> / <span id="showTotal">06</span></p>
+          <ol class="show-list" id="showList"><!-- rendered from js/data.js --></ol>
+          <p class="show-note">Every piece can be mixed into custom assortments, boxed for gifting and made in bulk. Quantities, packaging and pricing on enquiry.</p>
+        </div>
+        <ol class="show-dots" id="showDots" aria-hidden="true"></ol>
+      </div>
+      <ul class="range" id="range" hidden><!-- fallback grid if 3D is unavailable --></ul>
     </section>
 
     <!-- FROM THE BLOCK: 1 KG blocks of authentic chocolate are the raw material -->

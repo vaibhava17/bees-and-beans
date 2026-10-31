@@ -20,18 +20,21 @@ $$('[data-addr]').forEach((s) => (s.textContent = BRAND.address));
 $('#year').textContent = new Date().getFullYear();
 const bindWa = (root = document) => $$('[data-wa]', root).forEach((a) => (a.href = waLink(a.dataset.wa)));
 
-/* ---------- render: what we make (real product photos, no prices) ---------- */
-$('#range').innerHTML = SIGNATURES.map((c, i) => `
-  <li class="piece rv">
-    <figure class="piece-img"><img src="${img(c.img, true)}" srcset="${img(c.img, true)} 700w, ${img(c.img)} 1400w" sizes="(max-width: 640px) 100vw, 33vw" alt="${c.alt}" loading="lazy" /></figure>
-    <div class="piece-copy">
-      <span class="piece-n">${String(i + 1).padStart(2, '0')}</span>
-      <h3>${c.name}</h3>
-      <p>${c.line}</p>
-      <p class="piece-for"><span>Popular for</span> ${c.goodFor.join(' · ')}</p>
-      <a class="piece-cta" href="#enquire" data-interest="Bulk order" data-note="${c.name}">Enquire in bulk <svg><use href="#i-arrow"/></svg></a>
-    </div>
+/* ---------- what we make: product panel (text) + 3D ring of real photos ---------- */
+const showList = $('#showList'), showDots = $('#showDots');
+showList.innerHTML = SIGNATURES.map((c, i) => `
+  <li class="prod${i ? '' : ' is-on'}">
+    <h2>${c.name.replace(/^(\S+)(\s.*)?$/, (m, a, b) => b ? `${a} <em>${b.trim()}</em>` : `<em>${a}</em>`)}</h2>
+    <p>${c.line}</p>
+    <p class="prod-for"><span>Popular for</span>${c.goodFor.join(' · ')}</p>
+    <a class="btn btn-gold" href="#enquire" data-interest="Bulk order" data-note="${c.name}">Enquire in bulk</a>
   </li>`).join('');
+showDots.innerHTML = SIGNATURES.map((c, i) => `<li class="${i ? '' : 'is-on'}">${c.name}</li>`).join('');
+$('#showTotal').textContent = String(SIGNATURES.length).padStart(2, '0');
+$('#range').innerHTML = SIGNATURES.map((c) => `
+  <li class="piece"><figure class="piece-img"><img src="${img(c.img, true)}" alt="${c.alt}" loading="lazy" /></figure>
+    <div class="piece-copy"><h3>${c.name}</h3><p>${c.line}</p><p class="piece-for"><span>Popular for</span> ${c.goodFor.join(' · ')}</p>
+    <a class="piece-cta" href="#enquire" data-interest="Bulk order" data-note="${c.name}">Enquire in bulk <svg><use href="#i-arrow"/></svg></a></div></li>`).join('');
 
 /* ---------- render: festive ---------- */
 $('#festivePanels').innerHTML = FESTIVE.map((f) => `
@@ -89,6 +92,34 @@ import('./galaxy.js').then(async ({ initGalaxy, travelOf }) => {
     },
   });
 }).catch((err) => { console.warn('3D galaxy unavailable', err); galaxy.classList.add('no-gl'); });
+
+/* ---------- what we make: 3D ring ---------- */
+const showcase = $('#collection'), prods = $$('.prod', showList), sdots = $$('li', showDots);
+let showActive = 0;
+new IntersectionObserver(async ([e], obs) => {
+  if (!e.isIntersecting) return;
+  obs.disconnect();
+  try {
+    const { initShowcase, slotOf } = await import('./showcase.js');
+    const sc = await initShowcase($('#showCanvas'), SIGNATURES.map((c) => img(c.img)), { reduced: REDUCED });
+    ScrollTrigger.create({
+      trigger: showcase, start: 'top top', end: 'bottom bottom',
+      onUpdate: (st) => {
+        sc.setProgress(st.progress);
+        const { active } = slotOf(st.progress, SIGNATURES.length);
+        if (active !== showActive) {
+          showActive = active;
+          prods.forEach((p, i) => p.classList.toggle('is-on', i === active));
+          sdots.forEach((d, i) => d.classList.toggle('is-on', i === active));
+          $('#showNum').textContent = String(active + 1).padStart(2, '0');
+        }
+      },
+    });
+  } catch (err) {
+    console.warn('3D showcase unavailable', err);
+    showcase.classList.add('no-gl'); $('#range').hidden = false;
+  }
+}, { rootMargin: '900px 0px' }).observe(showcase);
 
 /* ---------- enquiry form ---------- */
 const form = $('#enqForm'), status = $('#fStatus');
