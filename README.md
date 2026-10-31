@@ -20,8 +20,7 @@ import map in `index.html`; three.js is only fetched when you scroll near the "F
 
 | # | Section | Highlights |
 |---|---|---|
-| 1 | Hero: "The art of gifting, made by hand." | **3D world** (`js/hero3d.js`): the ribboned gift box floats in an emerald night, the lid lifts, gold light spills out and handmade chocolates burst into a zero-gravity orbit through gold dust; follows the pointer, orbit widens as you scroll away |
-| 2 | Our craftsmanship | sticky photo frame that changes with four steps (mobile: photo per step) |
+| 1 | Galaxy (hero + craft, `js/galaxy.js`) | one pinned 3D journey through an emerald night of gold dust: the ribboned gift box opens and chocolates float into orbit; scrolling flies the camera on to four craft chapters — cacao pod with orbiting ingredients, copper bowl of swirling chocolate, mould tray filling, a truffle having its cross piped with gold leaf drifting; captions and a chapter rail follow the camera |
 | 3 | What we make | six real products (brand photos) in arch frames — truffles, rochers, mendiants, barks, fruit & nut hearts, assorted gift boxes; "popular for" + enquire. No prices. |
 | 4 | From block to box | 5-step scroll story in procedural 3D — one 1 KG block of authentic chocolate unwraps, breaks along its grooves, melts into a glossy pool, rises as truffles/rochers/mendiants/hearts, and settles into the ribboned gift box; step numeral, step rail and captions per step |
 | 5 | Festive collections | Diwali (maroon & marigold, arch), Christmas (pine & cranberry, offset frame), New Year (midnight & champagne, circle) |

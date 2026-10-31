@@ -48,10 +48,6 @@ $('#festivePanels').innerHTML = FESTIVE.map((f) => `
     </div>
   </article>`).join('');
 
-/* ---------- craft: mobile gets an image per step ---------- */
-const frames = $$('.craft-frame img');
-$$('.step').forEach((s, i) => s.insertAdjacentHTML('afterbegin', `<img class="step-img" src="${frames[i].getAttribute('src')}" alt="" loading="lazy" />`));
-
 /* ---------- nav ---------- */
 const nav = $('#nav'), menu = $('#menu');
 let lastY = scrollY;
@@ -72,14 +68,27 @@ menu.addEventListener('click', () => setMenu(!nav.classList.contains('is-open'))
 $$('#navLinks a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
 addEventListener('keydown', (e) => e.key === 'Escape' && setMenu(false));
 
-/* ---------- hero world (3D) ---------- */
-const heroEl = $('#top');
-const onHero = () => nav.classList.toggle('on-hero', scrollY < heroEl.offsetHeight - 80);
+/* ---------- galaxy: hero + craft as one 3D journey ---------- */
+const galaxy = $('#top'), chaps = $$('.chap'), grail = $$('.galaxy-rail li');
+const onHero = () => nav.classList.toggle('on-hero', scrollY < galaxy.offsetHeight - 80);
 addEventListener('scroll', onHero, { passive: true }); onHero();
-import('./hero3d.js').then(({ initHero }) => initHero($('#heroCanvas'), { reduced: REDUCED })).then((hero) => {
-  const upd = () => hero.setScroll(Math.min(1, Math.max(0, scrollY / heroEl.offsetHeight)));
-  addEventListener('scroll', upd, { passive: true }); upd();
-}).catch((err) => { console.warn('3D hero unavailable', err); heroEl.classList.add('no-gl'); });
+let galaxyChapter = 0;
+import('./galaxy.js').then(async ({ initGalaxy, travelOf }) => {
+  const g = await initGalaxy($('#galaxyCanvas'), { reduced: REDUCED });
+  ScrollTrigger.create({
+    trigger: galaxy, start: 'top top', end: 'bottom bottom',
+    onUpdate: (st) => {
+      g.setProgress(st.progress);
+      const { chapter } = travelOf(st.progress);
+      galaxy.classList.toggle('past-hero', st.progress > .04);
+      if (chapter !== galaxyChapter) {
+        galaxyChapter = chapter;
+        chaps.forEach((c, i) => c.classList.toggle('is-on', i === chapter));
+        grail.forEach((r, i) => r.classList.toggle('is-on', i === chapter));
+      }
+    },
+  });
+}).catch((err) => { console.warn('3D galaxy unavailable', err); galaxy.classList.add('no-gl'); });
 
 /* ---------- enquiry form ---------- */
 const form = $('#enqForm'), status = $('#fStatus');
@@ -154,19 +163,6 @@ bindWa();
 /* ---------- floating WhatsApp (after the hero) ---------- */
 const waFloat = $('.wa-float');
 new IntersectionObserver(([e]) => waFloat.classList.toggle('is-on', !e.isIntersecting && !document.querySelector('#enquire:hover')), { threshold: .2 }).observe($('#top'));
-
-/* ---------- craft steps ---------- */
-const steps = $$('.step'), craftNum = $('#craftNum');
-let bigLoaded = false;
-const io = new IntersectionObserver((es) => es.forEach((e) => {
-  if (!e.isIntersecting) return;
-  const i = +e.target.dataset.step;
-  steps.forEach((s) => s.classList.toggle('is-on', s === e.target));
-  frames.forEach((f, k) => f.classList.toggle('is-on', k === i));
-  craftNum.textContent = String(i + 1).padStart(2, '0');
-  if (!bigLoaded && innerWidth > 960) { bigLoaded = true; frames.forEach((f) => (f.src = f.dataset.src)); }
-}), { rootMargin: '-45% 0px -45% 0px' });
-steps.forEach((s) => io.observe(s));
 
 /* ---------- from block to box (3D, five steps) ---------- */
 const onekg = $('#onekg'), caps = $$('.cap'), prog = $('.onekg-progress'), rail = $$('.onekg-rail li'), stepNum = $('#stepNum');

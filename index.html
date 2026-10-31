@@ -75,48 +75,32 @@
   </header>
 
   <main id="main">
-    <!-- HERO: a living 3D world — the gift box opens and chocolates float out into orbit -->
-    <section class="hero" id="top">
-      <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
-      <img class="hero-fallback" src="assets/img/p-box-sm.webp" alt="" />
-      <div class="hero-veil" aria-hidden="true"></div>
-      <div class="hero-copy">
-        <p class="kicker rv-h">Bees &amp; Beans · Handmade chocolates</p>
-        <p class="hero-hi rv-h" lang="hi">मुँह मीठा कीजिए</p>
-        <h1 class="rv-h">The art of gifting, <em>made by hand.</em></h1>
-        <p class="hero-lede rv-h">Handcrafted chocolate assortments and hampers for Diwali, festive and corporate gifting — made in small batches and presented in our signature ribboned boxes.</p>
-        <div class="hero-ctas rv-h">
-          <a class="btn btn-gold" href="#enquire">Plan your gifting</a>
-          <a class="btn btn-ghost" href="#collection">View the collection</a>
-        </div>
-      </div>
-      <a class="scroll-cue" href="#craft" aria-label="Scroll to our craft"><span></span></a>
-    </section>
-
-    <!-- CRAFT -->
-    <section class="craft" id="craft">
-      <div class="border-strip" aria-hidden="true"></div>
-      <div class="craft-media" aria-hidden="true">
-        <div class="craft-frame jharokha">
-          <img class="is-on" src="assets/img/craft-cacao-sm.webp" data-src="assets/img/craft-cacao.webp" alt="" />
-          <img src="assets/img/craft-temper-sm.webp" data-src="assets/img/craft-temper.webp" alt="" loading="lazy" />
-          <img src="assets/img/craft-pour-sm.webp" data-src="assets/img/craft-pour.webp" alt="" loading="lazy" />
-          <img src="assets/img/p-truffle-dark.webp" data-src="assets/img/p-truffle-dark.webp" alt="" loading="lazy" />
-          <svg class="jh-line" viewBox="0 0 200 260" preserveAspectRatio="none"><path d="M0 260L0 95A23.8 23.8 0 0 1 7.7 57.5A23.8 23.8 0 0 1 29.6 26.0A23.8 23.8 0 0 1 62.1 5.8A23.8 23.8 0 0 1 100.0 0.0A23.8 23.8 0 0 1 137.9 5.8A23.8 23.8 0 0 1 170.4 26.0A23.8 23.8 0 0 1 192.3 57.5A23.8 23.8 0 0 1 200.0 95.0L200 260Z"/></svg>
-        </div>
-        <p class="craft-count"><b id="craftNum">01</b> / 04</p>
-      </div>
-      <div class="craft-copy">
-        <header class="sec-head">
-          <p class="kicker">Our craftsmanship</p>
-          <h2>Made slowly, <em>the way it should be.</em></h2>
-        </header>
-        <ol class="steps">
-          <li class="step" data-step="0"><span class="step-n" aria-hidden="true">I</span><h3>Chosen with care</h3><p>It begins with the ingredients — real chocolate, roasted nuts, ripe fruit and carefully chosen fillings. No shortcuts, no compromises.</p></li>
-          <li class="step" data-step="1"><span class="step-n" aria-hidden="true">II</span><h3>Worked by hand</h3><p>Chocolate is melted slowly and worked by hand until it is glossy and smooth — the part no machine does quite as well.</p></li>
-          <li class="step" data-step="2"><span class="step-n" aria-hidden="true">III</span><h3>Made in small batches</h3><p>Poured, filled and set a few trays at a time, so every batch gets attention — and reaches you fresh, never from a warehouse shelf.</p></li>
-          <li class="step" data-step="3"><span class="step-n" aria-hidden="true">IV</span><h3>Finished one by one</h3><p>Each piece is finished, checked and packed by hand, ready to be gifted, shared and remembered.</p></li>
+    <!-- GALAXY: hero + craft as one journey through an emerald night (js/galaxy.js) -->
+    <section class="galaxy" id="top" aria-label="Bees & Beans — from gift box to craft">
+      <span class="anchor" id="craft" style="top:20%"></span>
+      <div class="galaxy-stage">
+        <canvas class="galaxy-canvas" id="galaxyCanvas" aria-hidden="true"></canvas>
+        <img class="hero-fallback" src="assets/img/p-box-sm.webp" alt="" />
+        <div class="hero-veil" aria-hidden="true"></div>
+        <ol class="chapters">
+          <li class="chap chap-hero is-on">
+            <p class="kicker rv-h">Bees &amp; Beans · Handmade chocolates</p>
+            <p class="hero-hi rv-h" lang="hi">मुँह मीठा कीजिए</p>
+            <h1 class="rv-h">The art of gifting, <em>made by hand.</em></h1>
+            <p class="hero-lede rv-h">Handcrafted chocolate assortments and hampers for Diwali, festive and corporate gifting — made in small batches and presented in our signature ribboned boxes.</p>
+            <div class="hero-ctas rv-h">
+              <a class="btn btn-gold" href="#enquire">Plan your gifting</a>
+              <a class="btn btn-ghost" href="#collection">View the collection</a>
+            </div>
+          </li>
+          <li class="chap"><p class="kicker">Our craft · I</p><h2>Chosen <em>with care.</em></h2><p>It begins with the ingredients — real chocolate, roasted nuts, ripe fruit and carefully chosen fillings. No shortcuts, no compromises.</p></li>
+          <li class="chap"><p class="kicker">Our craft · II</p><h2>Worked <em>by hand.</em></h2><p>Chocolate is melted slowly and worked by hand until it is glossy and smooth — the part no machine does quite as well.</p></li>
+          <li class="chap"><p class="kicker">Our craft · III</p><h2>Made in <em>small batches.</em></h2><p>Poured, filled and set a few trays at a time, so every batch gets attention — and reaches you fresh, never from a warehouse shelf.</p></li>
+          <li class="chap"><p class="kicker">Our craft · IV</p><h2>Finished <em>one by one.</em></h2><p>Each piece is finished, checked and packed by hand, ready to be gifted, shared and remembered.</p>
+            <a class="btn btn-gold" href="#collection">See what we make</a></li>
         </ol>
+        <ol class="galaxy-rail" aria-hidden="true"><li class="is-on">The gift</li><li>Chosen</li><li>Worked</li><li>Poured</li><li>Finished</li></ol>
+        <a class="scroll-cue" href="#craft" aria-label="Scroll to our craft"><span></span></a>
       </div>
     </section>
 

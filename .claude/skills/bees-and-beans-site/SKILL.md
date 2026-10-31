@@ -38,7 +38,7 @@ For general motion/Safari rules see the `cinematic-story-site` skill in this rep
 | Tokens, section styles, festive themes (`.fest-diwali/-christmas/-newyear`) | `css/style.css` |
 | Interactions, form validation, WhatsApp message | `js/main.js` |
 | 3D 1 KG block (geometry, wrapper label, scroll keyframes `KEYS`) | `js/bar3d.js` |
-| 3D hero world (box opens, chocolates orbit, gold dust) | `js/hero3d.js` |
+| Galaxy: hero + craft as one 3D scroll journey (5 chapters, `travelOf(p)`) | `js/galaxy.js` |
 | Shared 3D chocolates + gift box (materials, truffle/rocher/mendiant/heart, `giftBox({ lid })`) | `js/choco3d.js` |
 
 ## Photos
@@ -58,11 +58,13 @@ opens WhatsApp (`wa.me/<BRAND.whatsapp>`) or a pre-filled email. If `BRAND.formE
 (e.g. Formspree), it also POSTs JSON there. Buttons with `data-interest` / `data-occasion` / `data-note`
 pre-fill the form from anywhere on the page.
 
-## 3D hero
+## Galaxy (hero + craft)
 
-`initHero(canvas)` loads on page start (three is needed above the fold). Intro: lid lifts 0.3–1.9 s, glow blooms,
-18 chocolates burst into 3 orbit rings from 1.1 s. Desktop: world sits right; chocolates fade as they swing behind
-the headline. Mobile: world above, copy below. No WebGL → `.hero.no-gl` shows the box photo.
+`#top` is 560vh with a sticky stage. `initGalaxy(canvas)` builds 5 chapter scenes spaced 30 units apart along -z:
+0 gift box opens + chocolate orbit, 1 cacao pod + ingredients, 2 copper bowl + spatula, 3 mould tray filling,
+4 truffle with animated piped cross + gold leaf. Scroll progress → `travelOf(p)` (each chapter holds, then the camera
+flies on); the caption shown is `Math.round(travel)` so text matches where the camera is. Gold dust and bokeh fill
+the whole path. Desktop scenes sit right of the copy; mobile above it. No WebGL → `.galaxy.no-gl` shows the box photo.
 
 ## 3D block
 
