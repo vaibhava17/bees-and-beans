@@ -158,17 +158,24 @@ const io = new IntersectionObserver((es) => es.forEach((e) => {
 }), { rootMargin: '-45% 0px -45% 0px' });
 steps.forEach((s) => io.observe(s));
 
-/* ---------- from the block (3D 1 KG block of authentic chocolate) ---------- */
-const onekg = $('#onekg'), caps = $$('.cap'), prog = $('.onekg-progress');
+/* ---------- from block to box (3D, five steps) ---------- */
+const onekg = $('#onekg'), caps = $$('.cap'), prog = $('.onekg-progress'), rail = $$('.onekg-rail li'), stepNum = $('#stepNum');
 let bar = null, barP = 0;
-const CAP_AT = [0, .27, .52, .76];
+const CAP_AT = [0, .18, .38, .58, .78]; // same stage boundaries as js/bar3d.js
+let stepNow = 0;
 ScrollTrigger.create({
   trigger: onekg, start: 'top top', end: 'bottom bottom',
   onUpdate: (st) => {
     barP = st.progress;
     prog.style.setProperty('--p', barP.toFixed(3));
     const k = CAP_AT.reduce((a, t, i) => (barP >= t - .001 ? i : a), 0);
-    caps.forEach((c, i) => c.classList.toggle('is-on', i === k));
+    if (k !== stepNow) {
+      stepNow = k;
+      caps.forEach((c, i) => c.classList.toggle('is-on', i === k));
+      rail.forEach((r, i) => { r.classList.toggle('is-on', i === k); r.classList.toggle('is-done', i < k); });
+      stepNum.textContent = String(k + 1).padStart(2, '0');
+      if (!REDUCED) gsap.fromTo(stepNum, { yPercent: 30, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .6, ease: 'power3.out' });
+    }
     bar?.setProgress(barP);
   },
 });

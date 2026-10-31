@@ -22,7 +22,7 @@ import map in `index.html`; three.js is only fetched when you scroll near the "F
 | 1 | Hero — "Crafted by hand. Made to be remembered." | arch-framed layered photos, parallax (scroll + pointer), drifting gold flakes & cocoa nibs, rotating seal |
 | 2 | Our craftsmanship | sticky photo frame that changes with four steps (mobile: photo per step) |
 | 3 | What we make | six real products (brand photos) in arch frames — truffles, rochers, mendiants, barks, fruit & nut hearts, assorted gift boxes; "popular for" + enquire. No prices. |
-| 4 | From the block | procedural 3D 1 KG block of authentic chocolate; plain wrapper slides off as you scroll; story: block → melted by hand → products → packed |
+| 4 | From block to box | 5-step scroll story in procedural 3D — one 1 KG block of authentic chocolate unwraps, breaks along its grooves, melts into a glossy pool, rises as truffles/rochers/mendiants/hearts, and settles into the ribboned gift box; step numeral, step rail and captions per step |
 | 5 | Festive collections | Diwali (maroon & marigold, arch), Christmas (pine & cranberry, offset frame), New Year (midnight & champagne, circle) |
 | 6 | Custom & bulk orders | enquiry chips that pre-fill the form; 4-step process |
 | 7 | Why Bees & Beans | six reasons |

@@ -54,8 +54,11 @@ pre-fill the form from anywhere on the page.
 
 ## 3D block
 
-Procedural three.js r185 (lazy-loaded near the section). Scroll progress → `setProgress(p)`; pose comes from
-`KEYS` `[p, rotX, rotY, cameraZ, sleeveOut]`, smoothed with `1 - exp(-6·dt)`. Desktop block sits left
+Procedural three.js r185 (lazy-loaded near the section), one object transformed in 5 stages (boundaries
+`[0, .18, .38, .58, .78]`, mirrored in `CAP_AT` in main.js): wrapper lifts off → 24 instanced pieces break
+apart → pieces drop into a rippling pool → 12 products (truffles milk/dark/white, rochers, mendiants, hearts)
+rise from it → they settle into the gift box and the ribbon ties. Scroll progress → `setProgress(p)`; pose
+from `KEYS` `[p, rotX, rotY, distance]`, smoothed with `1 - exp(-6·dt)`. Desktop block sits left
 (captions right); mobile is centred higher with captions over a bottom gradient. No WebGL → `.no-gl` shows
 `bar-close.webp`. Render loop = `gsap.ticker`, paused off-screen/hidden.
 
