@@ -41,6 +41,7 @@ For general motion/Safari rules see the `cinematic-story-site` skill in this rep
 | Galaxy: hero + craft as one 3D scroll journey (5 chapters, `travelOf(p)`) | `js/galaxy.js` |
 | What we make: real photos as medallions on a 3D ring (`slotOf(p, n)`) | `js/showcase.js` |
 | Festive seasons: gift box + per-festival worlds (`seasonOf(p)`) | `js/seasons.js` |
+| Finale: box pyramid → gold seals → bee & bean → invitation card (`chapterOf(p)`) | `js/finale.js` |
 | Shared 3D chocolates + gift box (materials, truffle/rocher/mendiant/heart, `giftBox({ lid })`) | `js/choco3d.js` |
 
 ## Photos

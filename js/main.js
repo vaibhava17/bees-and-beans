@@ -159,6 +159,30 @@ new IntersectionObserver(async ([e], obs) => {
   }
 }, { rootMargin: '900px 0px' }).observe(seasonsEl);
 
+/* ---------- finale: bulk, why, story, invitation ---------- */
+const finale = $('#bulk'), fins = $$('.fin'), frail = $$('.finale-rail li');
+let finActive = 0;
+new IntersectionObserver(async ([e], obs) => {
+  if (!e.isIntersecting) return;
+  obs.disconnect();
+  try {
+    const { initFinale, chapterOf } = await import('./finale.js');
+    const fx = await initFinale($('#finaleCanvas'), { reduced: REDUCED });
+    ScrollTrigger.create({
+      trigger: finale, start: 'top top', end: 'bottom bottom',
+      onUpdate: (st) => {
+        fx.setProgress(st.progress);
+        const { active } = chapterOf(st.progress);
+        if (active !== finActive) {
+          finActive = active;
+          fins.forEach((f, i) => f.classList.toggle('is-on', i === active));
+          frail.forEach((r, i) => r.classList.toggle('is-on', i === active));
+        }
+      },
+    });
+  } catch (err) { console.warn('3D finale unavailable', err); finale.classList.add('no-gl'); }
+}, { rootMargin: '900px 0px' }).observe(finale);
+
 /* ---------- enquiry form ---------- */
 const form = $('#enqForm'), status = $('#fStatus');
 const sel = form.elements.interest;
@@ -277,7 +301,7 @@ if (!REDUCED) {
   $$('.fest-img').forEach((f) => gsap.fromTo(f, { clipPath: 'inset(14% 10% 14% 10%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: f, start: 'top 95%', end: 'top 45%', scrub: true } }));
 
   // reveals
-  const rv = $$('.sec-head, .why-grid li, .process li, .chips, .story-copy > *, .enq-side, .form, .index-note');
+  const rv = $$('.sec-head, .enq-side, .form');
   rv.forEach((el) => el.classList.add('rv'));
   ScrollTrigger.batch('.rv', {
     start: 'top 88%', once: true,

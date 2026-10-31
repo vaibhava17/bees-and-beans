@@ -167,59 +167,57 @@
       <div id="festivePanels" hidden><!-- fallback panels if 3D is unavailable --></div>
     </section>
 
-    <!-- BULK -->
-    <section class="bulk" id="bulk">
-      <div class="border-strip" aria-hidden="true"></div>
-      <div class="bulk-inner">
-        <header class="sec-head">
-          <p class="kicker">Custom &amp; bulk orders</p>
-          <h2>Corporate &amp; family gifting, <em>handled personally.</em></h2>
-          <p class="sec-lede">Tell us what you're celebrating and how many people you're delighting. We'll suggest the chocolates, the packaging and the finishing touches.</p>
-        </header>
-        <div class="chips" role="group" aria-label="Start an enquiry about">
-          <button type="button" class="chip" data-interest="Assorted gift boxes">Assorted gift boxes</button>
-          <button type="button" class="chip" data-interest="Custom assortments">Custom assortments</button>
-          <button type="button" class="chip" data-interest="Festive hamper">Festive hampers</button>
-          <button type="button" class="chip" data-interest="Bulk order">Bulk orders</button>
-          <button type="button" class="chip" data-interest="Corporate gifting">Corporate gifting</button>
-          <button type="button" class="chip" data-interest="Personalised packaging">Personalised packaging</button>
-        </div>
-        <ol class="process">
-          <li><b aria-hidden="true">I</b><h3>Tell us</h3><p>The occasion, the quantity and your budget.</p></li>
-          <li><b aria-hidden="true">II</b><h3>We suggest</h3><p>Chocolates, assortments and packaging to suit.</p></li>
-          <li><b aria-hidden="true">III</b><h3>We craft</h3><p>Made by hand in small batches, close to your date.</p></li>
-          <li><b aria-hidden="true">IV</b><h3>You gift</h3><p>Packed, finished and ready for the moment.</p></li>
+    <!-- FINALE: bulk, why, story and an invitation — one pinned 3D scene (js/finale.js) -->
+    <section class="finale" id="bulk" aria-label="Corporate gifting, why Bees & Beans, our story">
+      <span class="anchor" id="why" style="top:26%"></span>
+      <span class="anchor" id="story" style="top:51%"></span>
+      <span class="anchor" id="invite" style="top:76%"></span>
+      <div class="finale-stage">
+        <canvas class="finale-canvas" id="finaleCanvas" aria-hidden="true"></canvas>
+        <div class="hero-veil" aria-hidden="true"></div>
+        <ol class="finale-list">
+          <li class="fin is-on">
+            <p class="kicker">Corporate &amp; family gifting</p>
+            <h2>Gifting at any scale, <em>handled personally.</em></h2>
+            <p>Tell us what you're celebrating and how many people you're delighting. We'll suggest the chocolates, the packaging and the finishing touches.</p>
+            <div class="chips" role="group" aria-label="Start an enquiry about">
+              <button type="button" class="chip" data-interest="Corporate gifting">Corporate gifting</button>
+              <button type="button" class="chip" data-interest="Assorted gift boxes">Assorted gift boxes</button>
+              <button type="button" class="chip" data-interest="Festive hampers">Festive hampers</button>
+              <button type="button" class="chip" data-interest="Custom assortments">Custom assortments</button>
+              <button type="button" class="chip" data-interest="Personalised packaging">Personalised packaging</button>
+            </div>
+            <ol class="fin-steps"><li><b>I</b>Tell us</li><li><b>II</b>We suggest</li><li><b>III</b>We craft</li><li><b>IV</b>You gift</li></ol>
+          </li>
+          <li class="fin">
+            <p class="kicker">Why Bees &amp; Beans</p>
+            <h2>The difference is <em>in the making.</em></h2>
+            <ul class="fin-why">
+              <li><b>Handmade in-house</b>Never outsourced, never mass-produced.</li>
+              <li><b>Premium ingredients</b>The finest chocolate, nuts and fruit.</li>
+              <li><b>Small batches</b>A few trays at a time, for freshness.</li>
+              <li><b>Authentic chocolate</b>Made from 1 KG blocks of authentic chocolate.</li>
+              <li><b>Personalised gifting</b>Your chocolates, notes and packaging.</li>
+              <li><b>Bulk &amp; corporate</b>For teams of ten or ten hundred.</li>
+            </ul>
+          </li>
+          <li class="fin">
+            <p class="kicker">Our story</p>
+            <blockquote>“Chocolate is more than a sweet treat. It's <em>an experience, a memory, a language of love.”</em></blockquote>
+            <p>The name says it all. The <b>bees</b> stand for the spirit we work with — tireless, purposeful and natural. The <b>beans</b> are the heart of every creation: rich cocoa, blended with carefully chosen fruits, nuts and fillings.</p>
+            <p class="sign">— Bees &amp; Beans, Panipat</p>
+          </li>
+          <li class="fin">
+            <p class="kicker">By invitation</p>
+            <h2>Let's make something <em>to remember.</em></h2>
+            <p>Share your occasion and quantity, and we'll come back with ideas, options and pricing — personally.</p>
+            <div class="hero-ctas">
+              <a class="btn btn-gold" href="#enquire">Write to us</a>
+              <a class="btn btn-ghost" data-wa="Hello Bees & Beans! I'd like to enquire about an order." href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+            </div>
+          </li>
         </ol>
-      </div>
-    </section>
-
-    <!-- WHY -->
-    <section class="why" id="why">
-      <div class="border-strip" aria-hidden="true"></div>
-      <header class="sec-head">
-        <p class="kicker">Why Bees &amp; Beans</p>
-        <h2>The difference is <em>in the making.</em></h2>
-      </header>
-      <ul class="why-grid">
-        <li><svg><use href="#i-hand"/></svg><h3>Handmade in-house</h3><p>Every chocolate is made in our own kitchen — never outsourced, never mass-produced.</p></li>
-        <li><svg><use href="#i-leaf"/></svg><h3>Premium ingredients</h3><p>The finest chocolate, nuts and fruits we can find. If it isn't good enough to eat by the handful, it doesn't go in.</p></li>
-        <li><svg><use href="#i-batch"/></svg><h3>Small batches</h3><p>Crafted a few trays at a time for freshness, care and a truly artisanal finish.</p></li>
-        <li><svg><use href="#i-bar"/></svg><h3>Authentic chocolate base</h3><p>We start from 1 KG blocks of authentic chocolate, and make everything else by hand.</p></li>
-        <li><svg><use href="#i-gift"/></svg><h3>Personalised gifting</h3><p>Your choice of chocolates, notes and packaging, made for the person receiving it.</p></li>
-        <li><svg><use href="#i-box"/></svg><h3>Bulk &amp; corporate</h3><p>Festive and client gifting for teams of ten or ten hundred, handled personally.</p></li>
-      </ul>
-    </section>
-
-    <!-- STORY -->
-    <section class="story" id="story">
-      <figure class="story-img jharokha"><img src="assets/img/story-pour-sm.webp" srcset="assets/img/story-pour-sm.webp 900w, assets/img/story-pour.webp 1800w" sizes="(max-width: 860px) 100vw, 50vw" alt="Melted chocolate being poured into moulds by hand" loading="lazy" /></figure>
-      <div class="story-copy">
-        <p class="kicker">Our story</p>
-        <blockquote>“Chocolate is more than a sweet treat. It's <em>an experience, a memory, a language of love.”</em></blockquote>
-        <p>Bees &amp; Beans began with a simple idea: to bring back the magic of handmade indulgence, crafted with patience and honesty.</p>
-        <p>The name says it all. The <b>bees</b> stand for the spirit we work with — tireless, purposeful and natural. The <b>beans</b> are the heart of every creation: rich cocoa, blended with carefully chosen fruits, nuts and fillings.</p>
-        <p>Unlike mass-produced chocolate, everything we make is handcrafted in small batches — so each piece arrives fresh, made with care, and made to be remembered.</p>
-        <p class="sign">— Bees &amp; Beans, Panipat</p>
+        <ol class="finale-rail" aria-hidden="true"><li class="is-on">At scale</li><li>Why us</li><li>Our story</li><li>Invitation</li></ol>
       </div>
     </section>
 

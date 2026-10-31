@@ -24,9 +24,7 @@ import map in `index.html`; three.js is only fetched when you scroll near the "F
 | 3 | What we make (`js/showcase.js`) | pinned, in the same emerald galaxy: the six real product photos as gold-rimmed medallions on a 3D ring; scroll turns each to the front while the panel shows its name, description, "popular for" and Enquire in bulk. No prices. Fallback grid if no WebGL |
 | 4 | From block to box | 5-step scroll story in procedural 3D — one 1 KG block of authentic chocolate unwraps, breaks along its grooves, melts into a glossy pool, rises as truffles/rochers/mendiants/hearts, and settles into the ribboned gift box; step numeral, step rail and captions per step |
 | 5 | Festive seasons (`js/seasons.js`) | pinned 3D scene: the gift box stays centre while the world changes per festival. Diwali: maroon night, flickering clay diyas, rising sky lanterns, sparks. Christmas: emerald, glossy baubles, falling snow. New Year: indigo, gold fireworks, champagne bubbles, confetti. Panel shows greeting, offers, pre-filled "Enquire for …"; tabs jump between them |
-| 6 | Custom & bulk orders | enquiry chips that pre-fill the form; 4-step process |
-| 7 | Why Bees & Beans | six reasons |
-| 8 | Our story | from the brand's own story — bees = care, beans = cocoa |
+| 6 | Finale (`js/finale.js`) | one pinned 3D scene: ribboned gift boxes fly in and stack into a pyramid (corporate & family gifting, enquiry chips) → six gold seals orbit (why us) → a golden bee loops around a cocoa bean (our story) → **the exclusive end**: the gift box opens and a gold-edged invitation card with a wax seal rises — "Let's make something to remember" |
 | 9 | Enquire | validated form → WhatsApp or email; optional Formspree endpoint |
 
 ## Edit content
