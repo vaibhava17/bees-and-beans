@@ -14,15 +14,18 @@ For general motion/Safari rules see the `cinematic-story-site` skill in this rep
    short curated list framed by how it's ordered in bulk ("Popular for: corporate boxes…"). Every CTA leads
    to an enquiry (form → WhatsApp/email).
 2. **Bulk first.** Primary CTA = "Plan a bulk order" / "Bulk enquiry". Occasions: Diwali, Christmas, New Year
-   (+ weddings/corporate). Keep enquiry actions visible in every section.
+   (+ corporate). **No weddings** — they don't take wedding/shaadi orders. Keep enquiry actions visible in every section.
 3. **No invented facts.** Don't add customer counts, reviews, testimonials, prices, hamper contents or
    delivery promises unless the owner confirms them.
    **1 KG blocks are raw material**: Bees & Beans buys 1 KG blocks of authentic chocolate and makes everything
    from them. Never sell or brand a "1 KG bar"; the 3D block's wrapper stays unbranded ("Pure Chocolate · 1 KG"). The current website's
    testimonials and "500+ customers" are not verified — don't reuse.
-4. **Identity:** cocoa-night darks, ivory/cream lights, champagne gold `#d6b77e`; Bodoni Moda display (italic
-   gold accents) + Jost body; hexagon = the bees (kicker bullets, seal, background patterns). Arches for
-   photos. Logo icon = cocoa pod (matches their printed ribbon/sticker). Avoid generic gradients, emoji, stock e-com cards.
+4. **Identity: "Mithai box": Indian, delightful, never cosmetic or generic.** Khadi-paper cream, cocoa, sindoor,
+   haldi, peacock, maroon and indigo, with gold. Rozha One (display, Devanagari-ready) + Hind. Indian motifs: a
+   marigold toran over the hero, jharokha (lobed Mughal arch) photo frames, block-print border strips between
+   sections, brass-thaali product plates, falling marigold petals, Hindi lines ("मुँह मीठा कीजिए", Hindi kickers,
+   Devanagari step numerals). Logo icon = cocoa pod (from their ribbon). Rejected looks (don't return to them):
+   dark gold/Bodoni "luxury cosmetics", and generic drips/stickers ("AI slop").
 
 ## Where things live
 

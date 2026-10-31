@@ -29,7 +29,7 @@ $('#range').innerHTML = SIGNATURES.map((c, i) => `
       <h3>${c.name}</h3>
       <p>${c.line}</p>
       <p class="piece-for"><span>Popular for</span> ${c.goodFor.join(' · ')}</p>
-      <a class="piece-cta" href="#enquire" data-interest="Bulk order" data-note="${c.name}" data-cursor="Enquire">Enquire in bulk <svg><use href="#i-arrow"/></svg></a>
+      <a class="piece-cta" href="#enquire" data-interest="Bulk order" data-note="${c.name}">Enquire in bulk <svg><use href="#i-arrow"/></svg></a>
     </div>
   </li>`).join('');
 
@@ -39,11 +39,12 @@ $('#festivePanels').innerHTML = FESTIVE.map((f) => `
     <figure class="fest-img"><img src="${img(f.img, true)}" srcset="${img(f.img, true)} 900w, ${img(f.img)} 1800w" sizes="(max-width: 960px) 100vw, 50vw" alt="${f.name} gifting" loading="lazy" /></figure>
     <div class="fest-copy rv">
       <p class="kicker">${f.kicker}</p>
+      <p class="fest-hi" lang="hi">${f.hi}</p>
       <span class="fest-name">${f.name}</span>
       <h3>${f.title}</h3>
       <p>${f.copy}</p>
       <ul class="offers">${f.offers.map(([t, d]) => `<li><b>${t}</b><span>${d}</span></li>`).join('')}</ul>
-      <a class="btn btn-gold" href="#enquire" data-occasion="${f.name}" data-interest="Festive hampers">Enquire for ${f.name}</a>
+      <a class="btn btn-choc" href="#enquire" data-occasion="${f.name}" data-interest="Festive hampers">Enquire for ${f.name}</a>
     </div>
   </article>`).join('');
 
@@ -192,61 +193,69 @@ new IntersectionObserver(async ([e], obs) => {
   }
 }, { rootMargin: '900px 0px' }).observe(onekg);
 
+/* ---------- toran: a marigold garland with mango leaves, hung across the hero ---------- */
+function buildToran(el) {
+  const W = 1440, H = 150, sag = 34, y0 = 10, step = 15;
+  const at = (x) => y0 + sag * Math.sin(Math.PI * (x / W)); // the rope sags in the middle
+  let flowers = '', leaves = '', strings = '';
+  for (let x = 6; x < W; x += step) flowers += `<use href="#genda" x="${x - 11}" y="${at(x) - 11}" width="22" height="22"/>`;
+  for (let x = 30, k = 0; x < W; x += 48, k++) {
+    const y = at(x) + 6;
+    leaves += `<g class="t-sway" style="transform-origin:${x}px ${y}px;animation-delay:${-(k % 7) * .45}s"><path d="M${x} ${y}c-9 10-10 28 0 42 10-14 9-32 0-42z" fill="${k % 2 ? '#2f7d32' : '#3f9a3c'}"/><path d="M${x} ${y + 3}v36" stroke="#1f5e22" stroke-width="1.2"/></g>`;
+  }
+  for (let x = 120, k = 0; x < W; x += 240, k++) { // longer hanging marigold strings (lari)
+    const y = at(x); let beads = '';
+    for (let j = 1; j <= 5; j++) beads += `<use href="#genda" x="${x - 9}" y="${y + j * 15 - 9}" width="18" height="18"/>`;
+    strings += `<g class="t-sway" style="transform-origin:${x}px ${y}px;animation-delay:${-k * .6}s">${beads}<circle cx="${x}" cy="${y + 92}" r="5" fill="#c33a28"/></g>`;
+  }
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMin slice">
+    <defs><symbol id="genda" viewBox="0 0 22 22">${Array.from({ length: 10 }, (_, i) => { const a = i * Math.PI / 5; return `<circle cx="${11 + Math.cos(a) * 6.5}" cy="${11 + Math.sin(a) * 6.5}" r="4.6" fill="${i % 2 ? '#f4a01c' : '#f7b733'}"/>`; }).join('')}<circle cx="11" cy="11" r="5" fill="#e8831a"/><circle cx="11" cy="11" r="2.2" fill="#c9650c"/></symbol></defs>
+    ${strings}${leaves}<path d="M0 ${y0} Q${W / 2} ${y0 + sag * 2} ${W} ${y0}" stroke="#7a3f12" stroke-width="2" fill="none"/>${flowers}</svg>`;
+}
+buildToran($('#toran'));
+
 /* ---------- motion ---------- */
 if (!REDUCED) {
-  // hero intro
+  // hero intro: the doorway opens, thaalis are set down, the stamp lands
   const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
-  tl.fromTo('.arch-main', { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 1.6 }, 0)
-    .fromTo('.arch-main img', { scale: 1.35 }, { scale: 1.12, duration: 2.2 }, 0)
-    .fromTo('.arch-small', { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.3 }, .5)
-    .fromTo('.hero-seal', { opacity: 0, scale: .7 }, { opacity: 1, scale: 1, duration: 1.2 }, .9)
-    .to('.rv-h', { opacity: 1, y: 0, duration: 1.2, stagger: .12 }, .2);
+  tl.to('.rv-h', { opacity: 1, y: 0, duration: 1.1, stagger: .1 }, .15)
+    .fromTo('.jh-hero', { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 1.5 }, .1)
+    .fromTo('.plate', { scale: 0, rotate: -20 }, { scale: 1, rotate: 0, duration: 1, ease: 'back.out(1.7)', stagger: .12 }, .6)
+    .fromTo('.stamp', { scale: 1.8, opacity: 0, rotate: 0 }, { scale: 1, opacity: 1, rotate: -10, duration: .45, ease: 'power3.in' }, 1.2)
+    .fromTo('.toran svg', { yPercent: -60 }, { yPercent: 0, duration: 1.4, ease: 'elastic.out(1, .55)' }, 0);
 
-  // gold flakes + cocoa nibs drifting through the hero
-  const flakes = $('.hero-flakes');
-  for (let i = 0; i < 18; i++) {
-    const f = document.createElement('i'), nib = i % 3 === 0, s = nib ? 6 + Math.random() * 6 : 4 + Math.random() * 7;
-    f.className = `flake${nib ? ' nib' : ''}`;
-    Object.assign(f.style, { left: `${Math.random() * 100}%`, width: `${s}px`, height: `${s * (.6 + Math.random() * .6)}px`,
-      animationDuration: `${14 + Math.random() * 16}s`, animationDelay: `${-Math.random() * 30}s` });
-    f.style.setProperty('--dx', `${(Math.random() - .5) * 160}px`);
-    f.style.setProperty('--r', `${(Math.random() - .5) * 900}deg`);
-    flakes.appendChild(f);
+  // marigold petals drifting down
+  const petals = $('.petals');
+  for (let i = 0; i < 22; i++) {
+    const b = document.createElement('i'), s = 8 + Math.random() * 9;
+    b.className = 'petal';
+    Object.assign(b.style, { left: `${Math.random() * 100}%`, width: `${s}px`, height: `${s * 1.4}px`, background: ['#f4a01c', '#f7b733', '#e8831a', '#c33a28'][i % 4],
+      animationDuration: `${11 + Math.random() * 12}s`, animationDelay: `${-Math.random() * 24}s` });
+    b.style.setProperty('--dx', `${(Math.random() - .5) * 220}px`);
+    b.style.setProperty('--r', `${(Math.random() - .5) * 900}deg`);
+    petals.appendChild(b);
   }
-  new IntersectionObserver(([e]) => flakes.style.display = e.isIntersecting ? '' : 'none').observe($('#top'));
+  new IntersectionObserver(([e]) => (petals.style.display = e.isIntersecting ? '' : 'none')).observe($('#top'));
 
-  // hero parallax (scroll) + gentle pointer drift
+  // hero parallax (scroll) + pointer drift
   $$('[data-depth]').forEach((el) => {
     const d = +el.dataset.depth;
-    gsap.to(el, { yPercent: -d * 120, ease: 'none', scrollTrigger: { trigger: '#top', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.to(el, { yPercent: -d * 60, ease: 'none', scrollTrigger: { trigger: '#top', start: 'top top', end: 'bottom top', scrub: true } });
   });
   if (FINE) {
-    const movers = $$('[data-depth]').map((el) => [el, +el.dataset.depth, gsap.quickTo(el, 'x', { duration: 1.2, ease: 'power3' })]);
+    const movers = $$('[data-depth]').map((el) => [+el.dataset.depth, gsap.quickTo(el, 'x', { duration: 1, ease: 'power3' })]);
     $('#top').addEventListener('pointermove', (e) => {
       const nx = e.clientX / innerWidth - .5;
-      movers.forEach(([, d, qx]) => qx(-nx * d * 90));
+      movers.forEach(([d, qx]) => qx(-nx * d * 60));
     });
   }
 
-  // image parallax inside frames
+  // festive + story images
   $$('.fest-img img, .story-img img').forEach((im) => gsap.fromTo(im, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: im.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }));
-  $$('.fest-img').forEach((f) => gsap.fromTo(f, { clipPath: 'inset(12% 8% 12% 8%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: f, start: 'top 95%', end: 'top 35%', scrub: true } }));
+  $$('.fest-img').forEach((f) => gsap.fromTo(f, { clipPath: 'inset(14% 10% 14% 10%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: f, start: 'top 95%', end: 'top 45%', scrub: true } }));
 
   // reveals
   const rv = $$('.sec-head, .why-grid li, .process li, .chips, .story-copy > *, .enq-side, .form, .index-note');
   rv.forEach((el) => el.classList.add('rv'));
-  ScrollTrigger.batch('.rv', { start: 'top 88%', once: true, onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out', stagger: .08 }) });
-
-  // cursor ring: grows with a label over interactive rows and CTAs
-  if (FINE) {
-    const cur = $('#cursor'), label = $('span', cur);
-    const cx = gsap.quickTo(cur, 'x', { duration: .35, ease: 'power3' }), cy = gsap.quickTo(cur, 'y', { duration: .35, ease: 'power3' });
-    addEventListener('pointermove', (e) => { cx(e.clientX); cy(e.clientY); cur.style.opacity = 1; }, { passive: true });
-    document.addEventListener('pointerleave', () => (cur.style.opacity = 0));
-    document.addEventListener('pointerover', (e) => {
-      const t = e.target.closest('[data-cursor], .fest-img');
-      cur.classList.toggle('is-big', !!t);
-      label.textContent = t ? (t.dataset.cursor || 'Gift') : '';
-    });
-  }
+  ScrollTrigger.batch('.rv', { start: 'top 88%', once: true, onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: .08 }) });
 }

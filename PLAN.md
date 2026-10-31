@@ -6,7 +6,10 @@
 - **Not used (unverified):** "500+ happy customers 4.9/5", review counts, testimonials, "Buy 2 Get 1 Free".
 - **Brand references** (Aesop, Hotel Chocolat, Venchi, Compartés, Marcolini) are used for qualities only: restraint, big editorial type, product as hero, warm darkness. No layout is copied.
 
-## Identity: "Hive & Cacao"
+## Identity (current): "Mithai box"
+Indian gifting language: toran, jharokha arches, block-print borders, brass thaalis, marigold petals, Hindi lines, Rozha One + Hind, jewel tones on khadi and cocoa. Replaced the earlier dark-gold look ("felt like cosmetics") and the drips version ("AI slop"). No weddings.
+
+## Identity (first draft, superseded): "Hive & Cacao"
 - **Idea:** the name already holds the story. A subtle hexagon (the bees) recurs in bullets, the seal and patterns. The logo icon is the cocoa pod from their own ribbon and sticker.
 - **Palette:** cocoa night #160d09, ganache #241510, cocoa #5b3a28, caramel #b8763a, champagne gold #d6b77e, cream #efe3cf, ivory #f8f2e7.
 - **Type:** Bodoni Moda (display, high contrast, italic accents) + Jost (body). Labels are small caps with letter-spacing.

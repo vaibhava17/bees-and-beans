@@ -2,7 +2,8 @@
 
 Premium enquiry website for Bees & Beans (Panipat), built for **bulk orders, corporate gifting and festive
 hampers** (Diwali, Christmas, New Year). Not a shop — every path leads to an enquiry on WhatsApp or email.
-Everything is handmade from 1 KG blocks of authentic chocolate (bought in; the blocks are the raw material,
+Identity: Indian mithai-box gifting (Rozha One + Hind, khadi/cocoa/sindoor/haldi/peacock, block-print borders).
+No wedding orders. Everything is handmade from 1 KG blocks of authentic chocolate (bought in; the blocks are the raw material,
 not a product).
 
 ## Run locally
@@ -19,7 +20,7 @@ import map in `index.html`; three.js is only fetched when you scroll near the "F
 
 | # | Section | Highlights |
 |---|---|---|
-| 1 | Hero — "Crafted by hand. Made to be remembered." | arch-framed layered photos, parallax (scroll + pointer), drifting gold flakes & cocoa nibs, rotating seal |
+| 1 | Hero: "मुँह मीठा कीजिए" / Handmade chocolates for every shubh occasion | marigold toran that sways, the real gift box in a jharokha arch, products on brass thaalis, "हाथ से बनी" stamp, falling marigold petals |
 | 2 | Our craftsmanship | sticky photo frame that changes with four steps (mobile: photo per step) |
 | 3 | What we make | six real products (brand photos) in arch frames — truffles, rochers, mendiants, barks, fruit & nut hearts, assorted gift boxes; "popular for" + enquire. No prices. |
 | 4 | From block to box | 5-step scroll story in procedural 3D — one 1 KG block of authentic chocolate unwraps, breaks along its grooves, melts into a glossy pool, rises as truffles/rochers/mendiants/hearts, and settles into the ribboned gift box; step numeral, step rail and captions per step |
