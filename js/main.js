@@ -193,49 +193,14 @@ new IntersectionObserver(async ([e], obs) => {
   }
 }, { rootMargin: '900px 0px' }).observe(onekg);
 
-/* ---------- toran: a marigold garland with mango leaves, hung across the hero ---------- */
-function buildToran(el) {
-  const W = 1440, H = 150, sag = 34, y0 = 10, step = 15;
-  const at = (x) => y0 + sag * Math.sin(Math.PI * (x / W)); // the rope sags in the middle
-  let flowers = '', leaves = '', strings = '';
-  for (let x = 6; x < W; x += step) flowers += `<use href="#genda" x="${x - 11}" y="${at(x) - 11}" width="22" height="22"/>`;
-  for (let x = 30, k = 0; x < W; x += 48, k++) {
-    const y = at(x) + 6;
-    leaves += `<g class="t-sway" style="transform-origin:${x}px ${y}px;animation-delay:${-(k % 7) * .45}s"><path d="M${x} ${y}c-9 10-10 28 0 42 10-14 9-32 0-42z" fill="${k % 2 ? '#2f7d32' : '#3f9a3c'}"/><path d="M${x} ${y + 3}v36" stroke="#1f5e22" stroke-width="1.2"/></g>`;
-  }
-  for (let x = 120, k = 0; x < W; x += 240, k++) { // longer hanging marigold strings (lari)
-    const y = at(x); let beads = '';
-    for (let j = 1; j <= 5; j++) beads += `<use href="#genda" x="${x - 9}" y="${y + j * 15 - 9}" width="18" height="18"/>`;
-    strings += `<g class="t-sway" style="transform-origin:${x}px ${y}px;animation-delay:${-k * .6}s">${beads}<circle cx="${x}" cy="${y + 92}" r="5" fill="#c33a28"/></g>`;
-  }
-  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMin slice">
-    <defs><symbol id="genda" viewBox="0 0 22 22">${Array.from({ length: 10 }, (_, i) => { const a = i * Math.PI / 5; return `<circle cx="${11 + Math.cos(a) * 6.5}" cy="${11 + Math.sin(a) * 6.5}" r="4.6" fill="${i % 2 ? '#f4a01c' : '#f7b733'}"/>`; }).join('')}<circle cx="11" cy="11" r="5" fill="#e8831a"/><circle cx="11" cy="11" r="2.2" fill="#c9650c"/></symbol></defs>
-    ${strings}${leaves}<path d="M0 ${y0} Q${W / 2} ${y0 + sag * 2} ${W} ${y0}" stroke="#7a3f12" stroke-width="2" fill="none"/>${flowers}</svg>`;
-}
-buildToran($('#toran'));
-
 /* ---------- motion ---------- */
 if (!REDUCED) {
-  // hero intro: the doorway opens, thaalis are set down, the stamp lands
-  const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
-  tl.to('.rv-h', { opacity: 1, y: 0, duration: 1.1, stagger: .1 }, .15)
-    .fromTo('.jh-hero', { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 1.5 }, .1)
-    .fromTo('.plate', { scale: 0, rotate: -20 }, { scale: 1, rotate: 0, duration: 1, ease: 'back.out(1.7)', stagger: .12 }, .6)
-    .fromTo('.stamp', { scale: 1.8, opacity: 0, rotate: 0 }, { scale: 1, opacity: 1, rotate: -10, duration: .45, ease: 'power3.in' }, 1.2)
-    .fromTo('.toran svg', { yPercent: -60 }, { yPercent: 0, duration: 1.4, ease: 'elastic.out(1, .55)' }, 0);
-
-  // marigold petals drifting down
-  const petals = $('.petals');
-  for (let i = 0; i < 22; i++) {
-    const b = document.createElement('i'), s = 8 + Math.random() * 9;
-    b.className = 'petal';
-    Object.assign(b.style, { left: `${Math.random() * 100}%`, width: `${s}px`, height: `${s * 1.4}px`, background: ['#f4a01c', '#f7b733', '#e8831a', '#c33a28'][i % 4],
-      animationDuration: `${11 + Math.random() * 12}s`, animationDelay: `${-Math.random() * 24}s` });
-    b.style.setProperty('--dx', `${(Math.random() - .5) * 220}px`);
-    b.style.setProperty('--r', `${(Math.random() - .5) * 900}deg`);
-    petals.appendChild(b);
-  }
-  new IntersectionObserver(([e]) => (petals.style.display = e.isIntersecting ? '' : 'none')).observe($('#top'));
+  // hero intro: the arch reveals the box, the thaalis settle, the gold line draws
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.to('.rv-h', { opacity: 1, y: 0, duration: 1.2, stagger: .1 }, .2)
+    .fromTo('.jh-hero img', { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 1.6, ease: 'power4.out' }, .1)
+    .fromTo('.jh-hero .jh-line path', { strokeDasharray: 1200, strokeDashoffset: 1200 }, { strokeDashoffset: 0, duration: 2.2, ease: 'power2.inOut' }, .3)
+    .fromTo('.plate', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.2, stagger: .15 }, .8);
 
   // hero parallax (scroll) + pointer drift
   $$('[data-depth]').forEach((el) => {
@@ -257,5 +222,17 @@ if (!REDUCED) {
   // reveals
   const rv = $$('.sec-head, .why-grid li, .process li, .chips, .story-copy > *, .enq-side, .form, .index-note');
   rv.forEach((el) => el.classList.add('rv'));
-  ScrollTrigger.batch('.rv', { start: 'top 88%', once: true, onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: .08 }) });
+  ScrollTrigger.batch('.rv', {
+    start: 'top 88%', once: true,
+    onEnter: (els) => {
+      // after a jump (nav link), anything already scrolled past appears at once; only what's on screen animates
+      const past = els.filter((e) => e.getBoundingClientRect().bottom < 0);
+      gsap.set(past, { opacity: 1, y: 0 });
+      gsap.to(els.filter((e) => !past.includes(e)), { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: .08 });
+    },
+  });
 }
+
+// fonts and lazy images change section heights — recalculate trigger positions once they've settled
+document.fonts?.ready.then(() => ScrollTrigger.refresh());
+addEventListener('load', () => ScrollTrigger.refresh());

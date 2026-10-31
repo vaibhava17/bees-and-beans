@@ -6,7 +6,10 @@
 - **Not used (unverified):** "500+ happy customers 4.9/5", review counts, testimonials, "Buy 2 Get 1 Free".
 - **Brand references** (Aesop, Hotel Chocolat, Venchi, Compartés, Marcolini) are used for qualities only: restraint, big editorial type, product as hero, warm darkness. No layout is copied.
 
-## Identity (current): "Mithai box"
+## Identity (current): "Heritage gifting"
+Quiet Indian luxury for affluent families and corporates: ivory, emerald, oxblood, antique gold; Libre Caslon Display + Jost; jharokha gold-line frames, jaali lattice, lotus dividers; one Devanagari line. Replaced the bazaar "Mithai box" version ("need high-class Indian customer, rich families & corporate").
+
+## Identity (superseded): "Mithai box"
 Indian gifting language: toran, jharokha arches, block-print borders, brass thaalis, marigold petals, Hindi lines, Rozha One + Hind, jewel tones on khadi and cocoa. Replaced the earlier dark-gold look ("felt like cosmetics") and the drips version ("AI slop"). No weddings.
 
 ## Identity (first draft, superseded): "Hive & Cacao"

@@ -20,12 +20,13 @@ For general motion/Safari rules see the `cinematic-story-site` skill in this rep
    **1 KG blocks are raw material**: Bees & Beans buys 1 KG blocks of authentic chocolate and makes everything
    from them. Never sell or brand a "1 KG bar"; the 3D block's wrapper stays unbranded ("Pure Chocolate · 1 KG"). The current website's
    testimonials and "500+ customers" are not verified — don't reuse.
-4. **Identity: "Mithai box": Indian, delightful, never cosmetic or generic.** Khadi-paper cream, cocoa, sindoor,
-   haldi, peacock, maroon and indigo, with gold. Rozha One (display, Devanagari-ready) + Hind. Indian motifs: a
-   marigold toran over the hero, jharokha (lobed Mughal arch) photo frames, block-print border strips between
-   sections, brass-thaali product plates, falling marigold petals, Hindi lines ("मुँह मीठा कीजिए", Hindi kickers,
-   Devanagari step numerals). Logo icon = cocoa pod (from their ribbon). Rejected looks (don't return to them):
-   dark gold/Bodoni "luxury cosmetics", and generic drips/stickers ("AI slop").
+4. **Identity: "Heritage gifting": quiet Indian luxury for affluent families and corporate buyers.** Ivory
+   muslin, deep emerald, oxblood and midnight, with antique gold. Libre Caslon Display (headings, gold italics) +
+   Jost (body); Devanagari only as one refined line in Tiro Devanagari Hindi ("मुँह मीठा कीजिए", festive greetings).
+   Ornament stays restrained: jharokha (lobed Mughal arch) photo frames drawn as one gold line, a lotus between gold
+   rules as the section divider, a faint jaali lattice on emerald/dark grounds, thaali-style product plates with a
+   thin gold ring. Logo icon = cocoa pod. Rejected and not to be revisited: dark-gold Bodoni ("cosmetics"), chocolate
+   drips/stickers ("AI slop"), and the loud bazaar version (toran, petals, Hindi everywhere: "not high-class").
 
 ## Where things live
 
