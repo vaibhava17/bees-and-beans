@@ -121,6 +121,44 @@ new IntersectionObserver(async ([e], obs) => {
   }
 }, { rootMargin: '900px 0px' }).observe(showcase);
 
+/* ---------- festive seasons: 3D scene + panel ---------- */
+const seasonsEl = $('#festive'), seasonStage = $('.season-stage'), stabs = $$('.season-tabs a');
+$('#seasonList').innerHTML = FESTIVE.map((f, i) => `
+  <li class="season${i ? '' : ' is-on'}">
+    <p class="season-hi" lang="hi">${f.hi}</p>
+    <h2>${f.name}</h2>
+    <p class="season-title">${f.title}</p>
+    <p class="season-copy">${f.copy}</p>
+    <ul class="season-offers">${f.offers.map(([t, d]) => `<li><b>${t}</b><span>${d}</span></li>`).join('')}</ul>
+    <a class="btn btn-gold" href="#enquire" data-occasion="${f.name}" data-interest="Festive hampers">Enquire for ${f.name}</a>
+  </li>`).join('');
+const seasonItems = $$('.season', $('#seasonList'));
+let seasonActive = 0;
+new IntersectionObserver(async ([e], obs) => {
+  if (!e.isIntersecting) return;
+  obs.disconnect();
+  try {
+    const { initSeasons, seasonOf } = await import('./seasons.js');
+    const ss = await initSeasons($('#seasonCanvas'), { reduced: REDUCED });
+    ScrollTrigger.create({
+      trigger: seasonsEl, start: 'top top', end: 'bottom bottom',
+      onUpdate: (st) => {
+        ss.setProgress(st.progress);
+        const { active } = seasonOf(st.progress);
+        if (active !== seasonActive) {
+          seasonActive = active;
+          seasonItems.forEach((it, i) => it.classList.toggle('is-on', i === active));
+          stabs.forEach((a, i) => a.classList.toggle('is-on', i === active));
+          seasonStage.dataset.season = active;
+        }
+      },
+    });
+  } catch (err) {
+    console.warn('3D seasons unavailable', err);
+    seasonsEl.classList.add('no-gl'); $('#festivePanels').hidden = false;
+  }
+}, { rootMargin: '900px 0px' }).observe(seasonsEl);
+
 /* ---------- enquiry form ---------- */
 const form = $('#enqForm'), status = $('#fStatus');
 const sel = form.elements.interest;

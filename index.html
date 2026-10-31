@@ -147,15 +147,24 @@
       </div>
     </section>
 
-    <!-- FESTIVE -->
-    <section class="festive" id="festive">
-      <div class="border-strip" aria-hidden="true"></div>
-      <header class="sec-head center festive-head">
-        <p class="kicker">Festive collections</p>
-        <h2>Seasons of <em>giving.</em></h2>
-        <nav class="season-tabs" aria-label="Festive collections"><a href="#fest-diwali">Diwali</a><a href="#fest-christmas">Christmas</a><a href="#fest-newyear">New Year</a></nav>
-      </header>
-      <div id="festivePanels"><!-- rendered from js/data.js --></div>
+    <!-- FESTIVE: one pinned 3D scene; the world around the gift box changes with each festival (js/seasons.js) -->
+    <section class="seasons" id="festive" aria-label="Festive collections">
+      <span class="anchor" id="fest-diwali" style="top:0"></span>
+      <span class="anchor" id="fest-christmas" style="top:34%"></span>
+      <span class="anchor" id="fest-newyear" style="top:67%"></span>
+      <div class="season-stage" data-season="0">
+        <div class="season-bg sb-0" aria-hidden="true"></div>
+        <div class="season-bg sb-1" aria-hidden="true"></div>
+        <div class="season-bg sb-2" aria-hidden="true"></div>
+        <canvas class="season-canvas" id="seasonCanvas" aria-hidden="true"></canvas>
+        <div class="hero-veil" aria-hidden="true"></div>
+        <div class="season-panel">
+          <p class="kicker">Festive collections</p>
+          <nav class="season-tabs" aria-label="Festive collections"><a href="#fest-diwali" class="is-on">Diwali</a><a href="#fest-christmas">Christmas</a><a href="#fest-newyear">New Year</a></nav>
+          <ol class="season-list" id="seasonList"><!-- rendered from js/data.js --></ol>
+        </div>
+      </div>
+      <div id="festivePanels" hidden><!-- fallback panels if 3D is unavailable --></div>
     </section>
 
     <!-- BULK -->
