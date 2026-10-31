@@ -62,6 +62,13 @@ opens WhatsApp (`wa.me/<BRAND.whatsapp>`) or a pre-filled email. If `BRAND.formE
 (e.g. Formspree), it also POSTs JSON there. Buttons with `data-interest` / `data-occasion` / `data-note`
 pre-fill the form from anywhere on the page.
 
+## v2 — one journey
+
+`/v2/` renders everything in ONE scene: `STATIONS` in `v2/js/world.js` (id, scroll length in vh, caption steps,
+sky colour, builder). `locate(p)` → station, hold progress `lp` (80% of each span), flight `travel` (last 20%),
+caption key `id:step`. Builders in `v2/js/stations.js` return `{ group, update(s), bg?(lp), celebrate? }`. Captions
+(`C` in `v2/js/main.js`) use `.split` headings (word mask reveal) and `.fill` (words light up with scroll).
+
 ## Galaxy (hero + craft)
 
 `#top` is 560vh with a sticky stage. `initGalaxy(canvas)` builds 5 chapter scenes spaced 30 units apart along -z:

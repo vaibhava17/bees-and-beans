@@ -79,8 +79,8 @@ export async function initBar(canvas, { reduced = false } = {}) {
   // 01–03 the block: 24 pieces (each = its share of the slab + its raised square) so it breaks along the grooves
   const sq = CELL - GAP;
   const pieceGeo = mergeGeometries([
-    new RoundedBoxGeometry(CELL - .006, .22, CELL - .006, 2, .025).translate(0, -.12, 0).toNonIndexed(),
-    new RoundedBoxGeometry(sq, .26, sq, 4, .1).translate(0, .1, 0).toNonIndexed(),
+    new RoundedBoxGeometry(CELL - .006, .22, CELL - .006, 2, .025).translate(0, -.12, 0),
+    new RoundedBoxGeometry(sq, .26, sq, 4, .1).translate(0, .1, 0),
   ]);
   pieceGeo.computeVertexNormals();
   const pieces = new THREE.InstancedMesh(pieceGeo, M.dark, N);

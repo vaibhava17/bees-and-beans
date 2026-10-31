@@ -11,4 +11,5 @@ Bees & Beans Handmade Chocolates (Panipat): a premium **bulk & festive gifting e
 - **Motion:** native scroll only (no Lenis, no snap). Animate transforms/opacity only. Respect `prefers-reduced-motion`. Pause 3D off-screen.
 - **Git:** remote `git@github-personal:vaibhava17/bees-and-beans.git`, local user vaibhava17, GitHub Pages from `main`. Don't commit/push unless asked.
 - **If ported to Next.js:** run `npm run lint` before and after changes; never `npm run build`.
+- **v2** (`/v2/`): the whole site as one continuous 3D scroll journey (`v2/js/world.js` stations + `v2/js/stations.js` builders). Edit station order/lengths in `STATIONS`; captions live in `v2/js/main.js` (`C`).
 - See `PLAN.md` for research, identity and open questions.

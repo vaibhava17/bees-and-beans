@@ -27,6 +27,18 @@ import map in `index.html`; three.js is only fetched when you scroll near the "F
 | 6 | Finale (`js/finale.js`) | one pinned 3D scene: ribboned gift boxes fly in and stack into a pyramid (corporate & family gifting, enquiry chips) → six gold seals orbit (why us) → a golden bee loops around a cocoa bean (our story) → **the exclusive end**: the gift box opens and a gold-edged invitation card with a wax seal rises — "Let's make something to remember" |
 | 7 | Contact + footer (`js/night.js`) | one 3D night sky behind both: gold dust, drifting chocolates and mini gift boxes. The form is an ivory "reply card" (validated → WhatsApp/email); sending it bursts the sky with a gold flash. Footer: giant gold Bees & Beans wordmark over a glowing horizon |
 
+## v2 — one continuous journey (`/v2/`)
+
+A second version at `/v2/` where the whole site is **one motion**: one fixed canvas, one scene, one camera path and
+one native scroll. Each chapter is a *station* along the path (`v2/js/world.js` → `STATIONS`), and scrolling flies the
+camera between them while the sky colour blends (emerald → cocoa → maroon/emerald/indigo → night). A few chocolates
+travel with the camera; captions swap in place, headings rise word by word, the story text fills in as you read, and
+the reply card + footer appear at the end. Station builders: `v2/js/stations.js` (reuses `js/choco3d.js`,
+`js/config.js`, `js/data.js`). The classic site stays at `/`.
+
+Order: gift box opens → cacao pod → 1 KG block (unwrap, break, melt) → copper bowl → moulds → truffle → product ring
+→ festive seasons → gifting at scale → why us → bee & bean → invitation → reply card.
+
 ## Edit content
 
 - Business details: `js/config.js`
