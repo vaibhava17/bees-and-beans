@@ -38,6 +38,8 @@ For general motion/Safari rules see the `cinematic-story-site` skill in this rep
 | Tokens, section styles, festive themes (`.fest-diwali/-christmas/-newyear`) | `css/style.css` |
 | Interactions, form validation, WhatsApp message | `js/main.js` |
 | 3D 1 KG block (geometry, wrapper label, scroll keyframes `KEYS`) | `js/bar3d.js` |
+| 3D hero world (box opens, chocolates orbit, gold dust) | `js/hero3d.js` |
+| Shared 3D chocolates + gift box (materials, truffle/rocher/mendiant/heart, `giftBox({ lid })`) | `js/choco3d.js` |
 
 ## Photos
 
@@ -55,6 +57,12 @@ Form validates (name, Indian mobile, optional email, occasion, interest) → bui
 opens WhatsApp (`wa.me/<BRAND.whatsapp>`) or a pre-filled email. If `BRAND.formEndpoint` is set
 (e.g. Formspree), it also POSTs JSON there. Buttons with `data-interest` / `data-occasion` / `data-note`
 pre-fill the form from anywhere on the page.
+
+## 3D hero
+
+`initHero(canvas)` loads on page start (three is needed above the fold). Intro: lid lifts 0.3–1.9 s, glow blooms,
+18 chocolates burst into 3 orbit rings from 1.1 s. Desktop: world sits right; chocolates fade as they swing behind
+the headline. Mobile: world above, copy below. No WebGL → `.hero.no-gl` shows the box photo.
 
 ## 3D block
 

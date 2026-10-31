@@ -20,7 +20,7 @@ import map in `index.html`; three.js is only fetched when you scroll near the "F
 
 | # | Section | Highlights |
 |---|---|---|
-| 1 | Hero: "The art of gifting, made by hand." | ivory and emerald split with a jaali lattice; the real gift box in a gold-line jharokha arch; products on thaali plates; one Devanagari line (मुँह मीठा कीजिए) |
+| 1 | Hero: "The art of gifting, made by hand." | **3D world** (`js/hero3d.js`): the ribboned gift box floats in an emerald night, the lid lifts, gold light spills out and handmade chocolates burst into a zero-gravity orbit through gold dust; follows the pointer, orbit widens as you scroll away |
 | 2 | Our craftsmanship | sticky photo frame that changes with four steps (mobile: photo per step) |
 | 3 | What we make | six real products (brand photos) in arch frames — truffles, rochers, mendiants, barks, fruit & nut hearts, assorted gift boxes; "popular for" + enquire. No prices. |
 | 4 | From block to box | 5-step scroll story in procedural 3D — one 1 KG block of authentic chocolate unwraps, breaks along its grooves, melts into a glossy pool, rises as truffles/rochers/mendiants/hearts, and settles into the ribboned gift box; step numeral, step rail and captions per step |

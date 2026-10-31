@@ -17,8 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Jost:wght@300;400;500;600&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="preload" as="image" href="assets/img/p-box-sm.webp" />
-  <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
   <script type="importmap">
   { "imports": {
       "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.15.0/index.js",
@@ -76,27 +75,22 @@
   </header>
 
   <main id="main">
-    <!-- HERO -->
+    <!-- HERO: a living 3D world — the gift box opens and chocolates float out into orbit -->
     <section class="hero" id="top">
-      <div class="hero-jaali" aria-hidden="true"></div>
+      <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <img class="hero-fallback" src="assets/img/p-box-sm.webp" alt="" />
+      <div class="hero-veil" aria-hidden="true"></div>
       <div class="hero-copy">
         <p class="kicker rv-h">Bees &amp; Beans · Handmade chocolates</p>
         <p class="hero-hi rv-h" lang="hi">मुँह मीठा कीजिए</p>
         <h1 class="rv-h">The art of gifting, <em>made by hand.</em></h1>
-        <p class="hero-lede rv-h">Handcrafted chocolate assortments and hampers for Diwali, festive and corporate gifting — made in small batches and presented in our signature ribboned boxes, for families and companies who give with care.</p>
+        <p class="hero-lede rv-h">Handcrafted chocolate assortments and hampers for Diwali, festive and corporate gifting — made in small batches and presented in our signature ribboned boxes.</p>
         <div class="hero-ctas rv-h">
-          <a class="btn btn-choc" href="#enquire">Plan your gifting</a>
-          <a class="btn btn-line" href="#collection">View the collection</a>
+          <a class="btn btn-gold" href="#enquire">Plan your gifting</a>
+          <a class="btn btn-ghost" href="#collection">View the collection</a>
         </div>
       </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="jharokha jh-hero" data-depth=".15">
-          <img src="assets/img/p-box-sm.webp" alt="" fetchpriority="high" />
-          <svg class="jh-line" viewBox="0 0 200 260" preserveAspectRatio="none"><path d="M0 260L0 95A23.8 23.8 0 0 1 7.7 57.5A23.8 23.8 0 0 1 29.6 26.0A23.8 23.8 0 0 1 62.1 5.8A23.8 23.8 0 0 1 100.0 0.0A23.8 23.8 0 0 1 137.9 5.8A23.8 23.8 0 0 1 170.4 26.0A23.8 23.8 0 0 1 192.3 57.5A23.8 23.8 0 0 1 200.0 95.0L200 260Z"/></svg>
-        </div>
-        <figure class="plate pl-truffle" data-depth=".45"><img src="assets/img/p-truffle-milk-sm.webp" alt="" /></figure>
-        <figure class="plate pl-mendiant" data-depth=".7"><img src="assets/img/p-mendiants-sm.webp" alt="" /></figure>
-      </div>
+      <a class="scroll-cue" href="#craft" aria-label="Scroll to our craft"><span></span></a>
     </section>
 
     <!-- CRAFT -->

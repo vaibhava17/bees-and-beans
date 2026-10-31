@@ -72,6 +72,15 @@ menu.addEventListener('click', () => setMenu(!nav.classList.contains('is-open'))
 $$('#navLinks a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
 addEventListener('keydown', (e) => e.key === 'Escape' && setMenu(false));
 
+/* ---------- hero world (3D) ---------- */
+const heroEl = $('#top');
+const onHero = () => nav.classList.toggle('on-hero', scrollY < heroEl.offsetHeight - 80);
+addEventListener('scroll', onHero, { passive: true }); onHero();
+import('./hero3d.js').then(({ initHero }) => initHero($('#heroCanvas'), { reduced: REDUCED })).then((hero) => {
+  const upd = () => hero.setScroll(Math.min(1, Math.max(0, scrollY / heroEl.offsetHeight)));
+  addEventListener('scroll', upd, { passive: true }); upd();
+}).catch((err) => { console.warn('3D hero unavailable', err); heroEl.classList.add('no-gl'); });
+
 /* ---------- enquiry form ---------- */
 const form = $('#enqForm'), status = $('#fStatus');
 const sel = form.elements.interest;
@@ -196,24 +205,7 @@ new IntersectionObserver(async ([e], obs) => {
 /* ---------- motion ---------- */
 if (!REDUCED) {
   // hero intro: the arch reveals the box, the thaalis settle, the gold line draws
-  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-  tl.to('.rv-h', { opacity: 1, y: 0, duration: 1.2, stagger: .1 }, .2)
-    .fromTo('.jh-hero img', { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 1.6, ease: 'power4.out' }, .1)
-    .fromTo('.jh-hero .jh-line path', { strokeDasharray: 1200, strokeDashoffset: 1200 }, { strokeDashoffset: 0, duration: 2.2, ease: 'power2.inOut' }, .3)
-    .fromTo('.plate', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.2, stagger: .15 }, .8);
-
-  // hero parallax (scroll) + pointer drift
-  $$('[data-depth]').forEach((el) => {
-    const d = +el.dataset.depth;
-    gsap.to(el, { yPercent: -d * 60, ease: 'none', scrollTrigger: { trigger: '#top', start: 'top top', end: 'bottom top', scrub: true } });
-  });
-  if (FINE) {
-    const movers = $$('[data-depth]').map((el) => [+el.dataset.depth, gsap.quickTo(el, 'x', { duration: 1, ease: 'power3' })]);
-    $('#top').addEventListener('pointermove', (e) => {
-      const nx = e.clientX / innerWidth - .5;
-      movers.forEach(([d, qx]) => qx(-nx * d * 60));
-    });
-  }
+  gsap.to('.rv-h', { opacity: 1, y: 0, duration: 1.3, ease: 'power3.out', stagger: .12, delay: .9 });
 
   // festive + story images
   $$('.fest-img img, .story-img img').forEach((im) => gsap.fromTo(im, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: im.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }));
