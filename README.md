@@ -25,7 +25,7 @@ import map in `index.html`; three.js is only fetched when you scroll near the "F
 | 4 | From block to box | 5-step scroll story in procedural 3D — one 1 KG block of authentic chocolate unwraps, breaks along its grooves, melts into a glossy pool, rises as truffles/rochers/mendiants/hearts, and settles into the ribboned gift box; step numeral, step rail and captions per step |
 | 5 | Festive seasons (`js/seasons.js`) | pinned 3D scene: the gift box stays centre while the world changes per festival. Diwali: maroon night, flickering clay diyas, rising sky lanterns, sparks. Christmas: emerald, glossy baubles, falling snow. New Year: indigo, gold fireworks, champagne bubbles, confetti. Panel shows greeting, offers, pre-filled "Enquire for …"; tabs jump between them |
 | 6 | Finale (`js/finale.js`) | one pinned 3D scene: ribboned gift boxes fly in and stack into a pyramid (corporate & family gifting, enquiry chips) → six gold seals orbit (why us) → a golden bee loops around a cocoa bean (our story) → **the exclusive end**: the gift box opens and a gold-edged invitation card with a wax seal rises — "Let's make something to remember" |
-| 9 | Enquire | validated form → WhatsApp or email; optional Formspree endpoint |
+| 7 | Contact + footer (`js/night.js`) | one 3D night sky behind both: gold dust, drifting chocolates and mini gift boxes. The form is an ivory "reply card" (validated → WhatsApp/email); sending it bursts the sky with a gold flash. Footer: giant gold Bees & Beans wordmark over a glowing horizon |
 
 ## Edit content
 

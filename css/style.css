@@ -322,6 +322,21 @@ h3 { font-size: 1.5rem; line-height: 1.2; color: var(--emerald); }
 .finale.no-gl .finale-list { position: static; width: auto; height: auto; display: grid; gap: 80px; }
 .finale.no-gl .fin { position: static; opacity: 1; visibility: visible; transform: none; }
 
+/* ---------- night: contact + footer under one 3D sky ---------- */
+.night { position: relative; background: radial-gradient(70% 50% at 70% 30%, #12403a 0%, #0a2a24 45%, #051512 100%); color: var(--on-dark); }
+.night-canvas { position: sticky; top: 0; z-index: 0; display: block; width: 100%; height: 100vh; height: var(--vh); margin-bottom: calc(-1 * var(--vh)); pointer-events: none; }
+.night > .enquire, .night > .foot { position: relative; z-index: 1; background: transparent; border-top: 0; }
+.night > .enquire::before { display: none; }
+.form-title { margin: -6px 0 2px; font: italic 400 1.5rem var(--display); color: var(--emerald); }
+.form-title span { font: 500 .66rem var(--sans); font-style: normal; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); margin-left: 6px; }
+.form.sent { animation: sent 1.2s var(--ease); }
+@keyframes sent { 30% { box-shadow: inset 0 0 0 8px var(--paper), inset 0 0 0 9px var(--gold-l), 0 0 80px 10px rgb(255 210 140 / .45); } }
+.foot-mark { margin: 0 0 -.12em; font: 400 clamp(4.2rem, 15vw, 15rem)/.9 var(--display); letter-spacing: -.02em; text-align: center; white-space: nowrap;
+  background: linear-gradient(180deg, #f2dcae 0%, #cdb17d 45%, rgb(168 131 74 / .15) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.foot-mark i { font-style: italic; }
+.foot-horizon { height: 1px; margin: 0 0 56px; background: linear-gradient(90deg, transparent, var(--gold-l) 50%, transparent); box-shadow: 0 0 30px 6px rgb(205 177 125 / .35); }
+.night .foot { padding-top: clamp(40px, 6vw, 80px); }
+
 /* ---------- enquire ---------- */
 .enquire { position: relative; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(40px, 7vw, 110px); padding: clamp(150px, 15vw, 190px) var(--pad) clamp(100px, 12vw, 150px); background: var(--emerald-d); color: var(--on-dark); }
 .enquire::before { content: ""; position: absolute; inset: 0; background: var(--jaali); background-size: 56px 56px; opacity: .06; pointer-events: none; }

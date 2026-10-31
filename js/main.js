@@ -183,6 +183,19 @@ new IntersectionObserver(async ([e], obs) => {
   } catch (err) { console.warn('3D finale unavailable', err); finale.classList.add('no-gl'); }
 }, { rootMargin: '900px 0px' }).observe(finale);
 
+/* ---------- night sky behind contact + footer ---------- */
+const nightEl = $('#night');
+let night = null;
+new IntersectionObserver(async ([e], obs) => {
+  if (!e.isIntersecting) return;
+  obs.disconnect();
+  try {
+    const { initNight } = await import('./night.js');
+    night = await initNight($('#nightCanvas'), { reduced: REDUCED });
+    ScrollTrigger.create({ trigger: nightEl, start: 'top bottom', end: 'bottom bottom', onUpdate: (st) => night.setProgress(st.progress) });
+  } catch (err) { console.warn('3D night unavailable', err); }
+}, { rootMargin: '900px 0px' }).observe(nightEl);
+
 /* ---------- enquiry form ---------- */
 const form = $('#enqForm'), status = $('#fStatus');
 const sel = form.elements.interest;
@@ -246,6 +259,7 @@ form.addEventListener('submit', async (e) => {
     : waLink(text);
   if (via === 'email') location.href = url; else window.open(url, '_blank', 'noopener');
   status.className = 'f-status ok';
+  night?.celebrate(); form.classList.remove('sent'); void form.offsetWidth; form.classList.add('sent');
   status.innerHTML = via === 'email'
     ? `Thank you, ${d.name.split(' ')[0]}. Your email app should open with the enquiry ready to send. <a href="${url}">Open it again</a>.`
     : `Thank you, ${d.name.split(' ')[0]}. WhatsApp should open with your enquiry ready to send. <a href="${url}" target="_blank" rel="noopener">Open WhatsApp again</a>.`;

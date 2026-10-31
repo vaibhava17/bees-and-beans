@@ -42,6 +42,7 @@ For general motion/Safari rules see the `cinematic-story-site` skill in this rep
 | What we make: real photos as medallions on a 3D ring (`slotOf(p, n)`) | `js/showcase.js` |
 | Festive seasons: gift box + per-festival worlds (`seasonOf(p)`) | `js/seasons.js` |
 | Finale: box pyramid → gold seals → bee & bean → invitation card (`chapterOf(p)`) | `js/finale.js` |
+| Night sky behind contact + footer; `celebrate()` on enquiry sent | `js/night.js` |
 | Shared 3D chocolates + gift box (materials, truffle/rocher/mendiant/heart, `giftBox({ lid })`) | `js/choco3d.js` |
 
 ## Photos
