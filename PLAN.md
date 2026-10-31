@@ -7,7 +7,7 @@
 - **Brand references** (Aesop, Hotel Chocolat, Venchi, Compartés, Marcolini) are used for qualities only: restraint, big editorial type, product as hero, warm darkness. No layout is copied.
 
 ## Identity: "Hive & Cacao"
-- **Idea:** the name already holds the story. The honeycomb (the bees) is pressed into the chocolate (the beans). A subtle hexagon motif is the brand's mark, and it appears on the 3D 1 KG bar.
+- **Idea:** the name already holds the story. A subtle hexagon (the bees) recurs in bullets, the seal and patterns. The logo icon is the cocoa pod from their own ribbon and sticker.
 - **Palette:** cocoa night #160d09, ganache #241510, cocoa #5b3a28, caramel #b8763a, champagne gold #d6b77e, cream #efe3cf, ivory #f8f2e7.
 - **Type:** Bodoni Moda (display, high contrast, italic accents) + Jost (body). Labels are small caps with letter-spacing.
 - **Photography:** dark, moody, free-licensed Pexels photos, kept to one consistent grade. These are temporary until the brand shoots its own product photos.
@@ -17,7 +17,7 @@
 2. Hero: "Crafted by hand. Made to be remembered." Layered parallax photo, floating gold flakes and cocoa nibs, two CTAs.
 3. Craft: sticky photo stack plus 4 steps (select, temper, pour, finish).
 4. What we make: 5 signature pieces as an editorial index. Hovering shows a photo preview. No prices; each piece shows what it's "popular for" plus an Enquire button. **Bulk-first, not a shop** (owner feedback 31 Oct).
-5. **1 KG showcase (signature moment):** a procedural three.js bar with honeycomb emboss, glossy tempered surface and a cream/gold sleeve. As you scroll, the sleeve slides off and the bar turns. Captions explain size, craft, inclusions and personalisation.
+5. **From the block (signature moment):** a procedural three.js 1 KG block of authentic chocolate with a plain wrapper that slides off as you scroll. The story runs block → melted by hand → products → packed. **The 1 KG blocks are the bought-in raw material, not a product** (owner, 31 Oct).
 6. Festive: Diwali, Christmas and New Year panels. Each has its own palette and photo, 3 offerings, and an enquiry pre-filled with that occasion.
 7. Why us: 6 points.
 8. Custom & bulk: enquiry-type chips that pre-fill the form, plus a 4-step process.
@@ -33,7 +33,8 @@
 
 ## Unresolved questions
 - Real product photos / logo?
-- 1 KG bar flavours, size, price?
+- OK to name the chocolate supplier/brand of the 1 KG blocks?
+- Higher-res originals of the product photos (and strawberries/bars, if they're yours)?
 - Festive hamper contents and prices?
 - Do you have a Formspree / email endpoint?
 - Real testimonials?

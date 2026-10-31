@@ -1,6 +1,6 @@
 ---
 name: bees-and-beans-site
-description: Work on the Bees & Beans handmade-chocolate website (this repo) — edit copy, business details, signature pieces or festive campaigns, swap in the brand's real photos, tune the 3D 1 KG bar, verify and deploy to GitHub Pages. Use for any change to this site.
+description: Work on the Bees & Beans handmade-chocolate website (this repo) — edit copy, business details, products or festive campaigns, swap in the brand's real photos, tune the 3D 1 KG block, verify and deploy to GitHub Pages. Use for any change to this site.
 ---
 
 # Bees & Beans site
@@ -15,30 +15,34 @@ For general motion/Safari rules see the `cinematic-story-site` skill in this rep
    to an enquiry (form → WhatsApp/email).
 2. **Bulk first.** Primary CTA = "Plan a bulk order" / "Bulk enquiry". Occasions: Diwali, Christmas, New Year
    (+ weddings/corporate). Keep enquiry actions visible in every section.
-3. **No invented facts.** Don't add customer counts, reviews, testimonials, prices, 1 KG flavours/sizes,
-   hamper contents or delivery promises unless the owner confirms them. The current website's
+3. **No invented facts.** Don't add customer counts, reviews, testimonials, prices, hamper contents or
+   delivery promises unless the owner confirms them.
+   **1 KG blocks are raw material**: Bees & Beans buys 1 KG blocks of authentic chocolate and makes everything
+   from them. Never sell or brand a "1 KG bar"; the 3D block's wrapper stays unbranded ("Pure Chocolate · 1 KG"). The current website's
    testimonials and "500+ customers" are not verified — don't reuse.
 4. **Identity:** cocoa-night darks, ivory/cream lights, champagne gold `#d6b77e`; Bodoni Moda display (italic
-   gold accents) + Jost body; hexagon = the bees (logo, kicker bullets, bar emboss, patterns). Arches for
-   photos. Avoid generic gradients, emoji, stock e-com cards.
+   gold accents) + Jost body; hexagon = the bees (kicker bullets, seal, background patterns). Arches for
+   photos. Logo icon = cocoa pod (matches their printed ribbon/sticker). Avoid generic gradients, emoji, stock e-com cards.
 
 ## Where things live
 
 | Change | File |
 |---|---|
 | Phone, WhatsApp, email, address, form endpoint | `js/config.js` (`BRAND`) |
-| Signature pieces, festive campaigns, enquiry "interested in" options | `js/data.js` |
-| Static copy (hero, craft steps, 1 KG captions, why, bulk, story) | `index.html` |
+| Products (`SIGNATURES`), festive campaigns, enquiry "interested in" options | `js/data.js` |
+| Static copy (hero, craft steps, "From the block" captions, why, bulk, story) | `index.html` |
 | Tokens, section styles, festive themes (`.fest-diwali/-christmas/-newyear`) | `css/style.css` |
 | Interactions, form validation, WhatsApp message | `js/main.js` |
-| 3D 1 KG bar (geometry, sleeve label, scroll keyframes `KEYS`) | `js/bar3d.js` |
+| 3D 1 KG block (geometry, wrapper label, scroll keyframes `KEYS`) | `js/bar3d.js` |
 
 ## Photos
 
-- Placeholders are free-licence Pexels photos in `assets/img/` (`name.webp` 1800w + `name-sm.webp` 900w).
-- To use the brand's own photos: keep the same file names (or update `img:` keys in `data.js` and the
+- Brand product photos: `assets/img/p-*.webp` (+ `-sm`), cropped from their social posts (~400–500px). Ask for
+  originals for better quality. Everything else is a free-licence Pexels placeholder (`name.webp` 1800w + `name-sm.webp` 900w).
+- Don't use the strawberry / "Chocolate Bars" flyer images (likely stock; one is watermarked by another site).
+- To add or replace photos: keep the same file names (or update `img:` keys in `data.js` and the
   `src`s in `index.html`), export both sizes as WebP (q≈74), dark/moody grade, then remove
-  "Photography: Pexels (placeholder)" from the footer.
+  the "Mood photography: Pexels (placeholder)" credit from the footer once no Pexels images remain.
 - Pillow is available at `/opt/homebrew/bin/python3.14` for resizing/converting.
 
 ## Enquiry flow
@@ -48,10 +52,10 @@ opens WhatsApp (`wa.me/<BRAND.whatsapp>`) or a pre-filled email. If `BRAND.formE
 (e.g. Formspree), it also POSTs JSON there. Buttons with `data-interest` / `data-occasion` / `data-note`
 pre-fill the form from anywhere on the page.
 
-## 3D bar
+## 3D block
 
 Procedural three.js r185 (lazy-loaded near the section). Scroll progress → `setProgress(p)`; pose comes from
-`KEYS` `[p, rotX, rotY, cameraZ, sleeveOut]`, smoothed with `1 - exp(-6·dt)`. Desktop bar sits left
+`KEYS` `[p, rotX, rotY, cameraZ, sleeveOut]`, smoothed with `1 - exp(-6·dt)`. Desktop block sits left
 (captions right); mobile is centred higher with captions over a bottom gradient. No WebGL → `.no-gl` shows
 `bar-close.webp`. Render loop = `gsap.ticker`, paused off-screen/hidden.
 

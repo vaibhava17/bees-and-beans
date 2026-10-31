@@ -1,32 +1,37 @@
 // Content data. This is a bulk / gifting enquiry site — not a shop: no prices, no carts, a short curated range.
-// `img` points at mood photography in assets/img until the brand's own product photos replace it.
+// Product photos (p-*) are the brand's own; festive photos are Pexels placeholders.
 
 // "What we make" — a handful of signature pieces, each framed by how it's ordered in bulk.
 export const SIGNATURES = [
   {
-    id: 'truffles', name: 'Truffles', img: 'craft-finish',
-    line: 'Hand-rolled ganache in milk, dark and white chocolate, finished one by one.',
-    goodFor: ['Festive hampers', 'Corporate boxes', 'Wedding favours'],
+    id: 'truffles', name: 'Truffles', img: 'p-truffle-milk', alt: 'Milk chocolate truffles with a piped white chocolate cross',
+    line: 'Milk, dark and white truffles, each finished with a hand-piped cross.',
+    goodFor: ['Festive boxes', 'Corporate gifting', 'Wedding favours'],
   },
   {
-    id: 'bonbonnieres', name: 'Bonbonnières', img: 'pieces-milk',
-    line: 'Nuts, berries and seeds set in chocolate — our most giftable piece.',
-    goodFor: ['Diwali gifting', 'Client gifting', 'Assorted boxes'],
+    id: 'rochers', name: 'Rochers', img: 'p-rochers', alt: 'Milk chocolate almond rochers',
+    line: 'Roasted almond flakes gathered in milk or dark chocolate.',
+    goodFor: ['Assorted boxes', 'Client gifting', 'Diwali hampers'],
   },
   {
-    id: 'dates', name: 'Chocolate Dates', img: 'texture-dark',
-    line: 'Medjool dates filled with pistachio, almond or hazelnut, then dipped.',
-    goodFor: ['Festive hampers', 'Diwali boxes', 'Family gifting'],
+    id: 'mendiants', name: 'Mendiants', img: 'p-mendiants', alt: 'Dark chocolate mendiants topped with almonds, pistachios and berries',
+    line: 'Chocolate discs topped with almonds, pistachios, cranberries, blueberries and seeds.',
+    goodFor: ['Festive hampers', 'Return gifts', 'Sharing platters'],
   },
   {
-    id: 'hearts', name: 'Hearts & Mendiants', img: 'pieces-white',
-    line: 'Ganache hearts and fruit-scattered discs, made for small, personal gifts.',
-    goodFor: ['Return gifts', 'Stocking fillers', 'Thank-you notes'],
+    id: 'barks', name: 'Barks', img: 'p-barks', alt: 'Dark chocolate bark with apricots, cranberries and pistachios',
+    line: 'Hand-broken bark with apricots, cranberries, pistachios and a white chocolate swirl.',
+    goodFor: ['Gift jars', 'Corporate boxes', 'Christmas gifting'],
   },
   {
-    id: 'bars', name: 'Bars & Bark', img: 'bar-close',
-    line: 'Centre-filled and decorated bars, and hand-broken bark — up to our 1 KG signature.',
-    goodFor: ['Custom bars', 'Branded gifting', 'Sharing platters'],
+    id: 'hearts', name: 'Fruit & Nut Hearts', img: 'p-heart', alt: 'Faceted chocolate hearts filled with cashews, almonds and seeds',
+    line: 'Faceted chocolate hearts filled with cashews, almonds, pumpkin seeds and sesame.',
+    goodFor: ['Personal gifts', 'Weddings', 'Thank-you notes'],
+  },
+  {
+    id: 'boxes', name: 'Assorted Gift Boxes', img: 'p-box', alt: 'Bees & Beans gift box of assorted chocolates tied with a branded ribbon',
+    line: 'Milk, dark and white pieces under glass, tied with the Bees & Beans ribbon.',
+    goodFor: ['Diwali', 'Corporate orders', 'Weddings'],
   },
 ];
 
@@ -40,7 +45,7 @@ export const FESTIVE = [
   {
     id: 'christmas', name: 'Christmas', kicker: 'Warmth, wrapped', img: 'christmas',
     title: 'A box worth waiting under the tree for.',
-    copy: 'Truffles, dipped fruit and bonbonnières in festive boxes — for teams, secret Santas and the table on the 25th.',
+    copy: 'Truffles, rochers, mendiants and barks in festive boxes — for teams, secret Santas and the table on the 25th.',
     offers: [['Christmas gift boxes', 'Festive assortments, ready to give'], ['Team gifting', 'One box per person, packed and labelled'], ['Party platters', 'Mixed pieces for gatherings']],
   },
   {
@@ -51,4 +56,4 @@ export const FESTIVE = [
   },
 ];
 
-export const INTERESTS = ['Corporate gifting', 'Festive hampers', 'Bulk order', '1 KG chocolate bars', 'Custom chocolate bars', 'Personalised packaging', 'Wedding / event favours', 'Something else'];
+export const INTERESTS = ['Corporate gifting', 'Festive hampers', 'Assorted gift boxes', 'Bulk order', 'Custom assortments', 'Personalised packaging', 'Wedding / event favours', 'Something else'];

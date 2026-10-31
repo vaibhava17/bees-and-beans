@@ -20,44 +20,18 @@ $$('[data-addr]').forEach((s) => (s.textContent = BRAND.address));
 $('#year').textContent = new Date().getFullYear();
 const bindWa = (root = document) => $$('[data-wa]', root).forEach((a) => (a.href = waLink(a.dataset.wa)));
 
-/* ---------- render: what we make ---------- */
-const index = $('#index');
-index.innerHTML = SIGNATURES.map((c, i) => `
-  <li class="row rv" data-img="${c.img}">
-    <button class="row-head" type="button" aria-expanded="false" aria-controls="row-${c.id}" data-cursor="Open">
-      <span class="row-n">${String(i + 1).padStart(2, '0')}</span>
-      <span class="row-name">${c.name}</span>
-      <span class="row-line">${c.line}</span>
-      <span class="row-plus" aria-hidden="true"></span>
-    </button>
-    <div class="row-body" id="row-${c.id}"><div>
-      <div class="row-inner">
-        <img class="row-img" src="${img(c.img, true)}" alt="" loading="lazy" />
-        <p class="row-desc">${c.line}</p>
-        <p class="items-label">Popular for</p>
-        <ul class="items">${c.goodFor.map((g) => `<li>${g}</li>`).join('')}</ul>
-        <a class="btn btn-line btn-sm" href="#enquire" data-interest="Bulk order" data-note="${c.name}">Enquire about ${c.name.toLowerCase()}</a>
-      </div>
-    </div></div>
+/* ---------- render: what we make (real product photos, no prices) ---------- */
+$('#range').innerHTML = SIGNATURES.map((c, i) => `
+  <li class="piece rv">
+    <figure class="piece-img"><img src="${img(c.img, true)}" srcset="${img(c.img, true)} 700w, ${img(c.img)} 1400w" sizes="(max-width: 640px) 100vw, 33vw" alt="${c.alt}" loading="lazy" /></figure>
+    <div class="piece-copy">
+      <span class="piece-n">${String(i + 1).padStart(2, '0')}</span>
+      <h3>${c.name}</h3>
+      <p>${c.line}</p>
+      <p class="piece-for"><span>Popular for</span> ${c.goodFor.join(' · ')}</p>
+      <a class="piece-cta" href="#enquire" data-interest="Bulk order" data-note="${c.name}" data-cursor="Enquire">Enquire in bulk <svg><use href="#i-arrow"/></svg></a>
+    </div>
   </li>`).join('');
-$$('.row-head', index).forEach((b) => b.addEventListener('click', () => {
-  const row = b.parentElement, open = !row.classList.contains('is-open');
-  $$('.row.is-open', index).forEach((r) => { r.classList.remove('is-open'); $('.row-head', r).setAttribute('aria-expanded', 'false'); });
-  row.classList.toggle('is-open', open);
-  b.setAttribute('aria-expanded', open);
-}));
-
-/* hover peek: an arch-framed photo that trails the cursor over the index */
-if (FINE && !REDUCED) {
-  const peek = $('#peek'), peekImg = $('img', peek);
-  const px = gsap.quickTo(peek, 'x', { duration: .6, ease: 'power3' }), py = gsap.quickTo(peek, 'y', { duration: .6, ease: 'power3' });
-  index.addEventListener('pointermove', (e) => { px(e.clientX + 30); py(e.clientY - 180); });
-  $$('.row', index).forEach((r) => r.addEventListener('pointerenter', () => {
-    peekImg.src = img(r.dataset.img, true);
-    gsap.to(peek, { opacity: 1, scale: 1, duration: .45, ease: 'power3.out' });
-  }));
-  index.addEventListener('pointerleave', () => gsap.to(peek, { opacity: 0, scale: .85, duration: .35 }));
-}
 
 /* ---------- render: festive ---------- */
 $('#festivePanels').innerHTML = FESTIVE.map((f) => `
@@ -184,7 +158,7 @@ const io = new IntersectionObserver((es) => es.forEach((e) => {
 }), { rootMargin: '-45% 0px -45% 0px' });
 steps.forEach((s) => io.observe(s));
 
-/* ---------- 1 KG bar ---------- */
+/* ---------- from the block (3D 1 KG block of authentic chocolate) ---------- */
 const onekg = $('#onekg'), caps = $$('.cap'), prog = $('.onekg-progress');
 let bar = null, barP = 0;
 const CAP_AT = [0, .27, .52, .76];

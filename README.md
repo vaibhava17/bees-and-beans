@@ -1,8 +1,9 @@
 # Bees & Beans — Handmade Chocolates
 
 Premium enquiry website for Bees & Beans (Panipat), built for **bulk orders, corporate gifting and festive
-hampers** (Diwali, Christmas, New Year) and the signature **1 KG chocolate bar**. Not a shop — every path
-leads to an enquiry on WhatsApp or email.
+hampers** (Diwali, Christmas, New Year). Not a shop — every path leads to an enquiry on WhatsApp or email.
+Everything is handmade from 1 KG blocks of authentic chocolate (bought in; the blocks are the raw material,
+not a product).
 
 ## Run locally
 
@@ -12,7 +13,7 @@ python3 -m http.server 5180
 ```
 
 No build step or npm install. Libraries (GSAP 3.15 + ScrollTrigger, three.js r185) load from a pinned CDN
-import map in `index.html`; three.js is only fetched when you scroll near the 1 KG section.
+import map in `index.html`; three.js is only fetched when you scroll near the "From the block" section.
 
 ## Sections
 
@@ -20,8 +21,8 @@ import map in `index.html`; three.js is only fetched when you scroll near the 1 
 |---|---|---|
 | 1 | Hero — "Crafted by hand. Made to be remembered." | arch-framed layered photos, parallax (scroll + pointer), drifting gold flakes & cocoa nibs, rotating seal |
 | 2 | Our craftsmanship | sticky photo frame that changes with four steps (mobile: photo per step) |
-| 3 | What we make | five signature pieces as an editorial index — hover photo preview, "popular for" uses, enquire per piece. No prices. |
-| 4 | The 1 KG bar | procedural 3D bar with honeycomb emboss; cream & gold sleeve slides off as you scroll; four captions |
+| 3 | What we make | six real products (brand photos) in arch frames — truffles, rochers, mendiants, barks, fruit & nut hearts, assorted gift boxes; "popular for" + enquire. No prices. |
+| 4 | From the block | procedural 3D 1 KG block of authentic chocolate; plain wrapper slides off as you scroll; story: block → melted by hand → products → packed |
 | 5 | Festive collections | Diwali (maroon & marigold, arch), Christmas (pine & cranberry, offset frame), New Year (midnight & champagne, circle) |
 | 6 | Custom & bulk orders | enquiry chips that pre-fill the form; 4-step process |
 | 7 | Why Bees & Beans | six reasons |
@@ -33,8 +34,8 @@ import map in `index.html`; three.js is only fetched when you scroll near the 1 
 - Business details: `js/config.js`
 - Signature pieces, festive campaigns, enquiry options: `js/data.js`
 - Everything else: `index.html`; styles in `css/style.css`
-- Photos: `assets/img/` — currently Pexels placeholders (free licence). Replace with the brand's own
-  photos using the same names (`name.webp` 1800w + `name-sm.webp` 900w).
+- Photos: `assets/img/p-*.webp` are the brand's own product photos (cropped from their posts, ~400–500px —
+  replace with higher-resolution originals when available). Craft/festive/mood photos are Pexels placeholders.
 
 ## Deploy
 

@@ -1,5 +1,6 @@
-// Signature 1 KG bar — procedural three.js. 6×4 bevelled squares, each pressed with a honeycomb hex (the bees),
-// glossy tempered surface, and a cream & gold sleeve that slides off as you scroll.
+// The 1 KG block of authentic chocolate everything starts from — procedural three.js. 6×4 bevelled squares,
+// glossy tempered surface, and a plain cream & gold wrapper (no Bees & Beans branding: the block is the raw
+// material from a supplier) that slides off as you scroll.
 // Driven by setProgress(0..1) from the page's scroll; renders on gsap.ticker only while on screen.
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
@@ -39,22 +40,15 @@ function sleeveTexture() {
   for (let i = 0; i < 9000; i++) { g.fillStyle = `rgba(120,90,60,${Math.random() * .05})`; g.fillRect(Math.random() * c.width, Math.random() * c.height, 2, 2); }
   g.strokeStyle = '#b8975a'; g.lineWidth = 6; g.strokeRect(48, 48, c.width - 96, c.height - 96);
   g.lineWidth = 2; g.strokeRect(70, 70, c.width - 140, c.height - 140);
-  // hex mark
-  const hx = c.width / 2, hy = 430, r = 120;
-  g.beginPath();
-  for (let k = 0; k < 6; k++) { const a = Math.PI / 3 * k - Math.PI / 2; g.lineTo(hx + r * Math.cos(a), hy + r * Math.sin(a)); }
-  g.closePath(); g.lineWidth = 5; g.stroke();
-  g.beginPath(); g.moveTo(hx - 42, hy + 52); g.quadraticCurveTo(hx - 40, hy - 30, hx, hy - 58); g.quadraticCurveTo(hx + 40, hy - 30, hx + 42, hy + 52);
-  g.moveTo(hx, hy - 58); g.lineTo(hx, hy + 62); g.stroke();
-  g.fillStyle = '#23160f'; g.textAlign = 'center';
-  g.font = '500 112px "Bodoni Moda", Didot, Georgia, serif';
-  g.fillText('Bees & Beans', hx, 720);
+  g.textAlign = 'center';
   g.fillStyle = '#a9884e'; g.font = '500 40px Jost, Futura, sans-serif';
-  g.fillText('H A N D M A D E   C H O C O L A T E', hx, 800);
-  g.fillStyle = '#23160f'; g.font = 'italic 400 76px "Bodoni Moda", Didot, Georgia, serif';
-  g.fillText('Signature Bar', hx, 960);
-  g.fillStyle = '#a9884e'; g.font = '500 56px Jost, Futura, sans-serif';
-  g.fillText('1  K G', hx, 1070);
+  g.fillText('A U T H E N T I C', c.width / 2, 470);
+  g.fillStyle = '#23160f'; g.font = 'italic 400 120px "Bodoni Moda", Didot, Georgia, serif';
+  g.fillText('Pure', c.width / 2, 640);
+  g.fillText('Chocolate', c.width / 2, 770);
+  g.strokeStyle = '#b8975a'; g.lineWidth = 2; g.beginPath(); g.moveTo(c.width / 2 - 90, 860); g.lineTo(c.width / 2 + 90, 860); g.stroke();
+  g.fillStyle = '#a9884e'; g.font = '500 64px Jost, Futura, sans-serif';
+  g.fillText('1  K G', c.width / 2, 960);
   const tex = new THREE.CanvasTexture(c);
   tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 8;
   return tex;
@@ -79,31 +73,20 @@ export async function initBar(canvas, { reduced = false } = {}) {
   const rim = new THREE.DirectionalLight(0xd6b77e, 3.2); rim.position.set(6, 2, -6); scene.add(rim);
   const fill = new THREE.PointLight(0xb8763a, 18, 30); fill.position.set(2, -3, 7); scene.add(fill);
 
-  // chocolate: base slab + bevelled squares + pressed hex on every square
+  // chocolate: base slab + bevelled squares
   const parts = [];
   const slab = new RoundedBoxGeometry(W + .1, .24, D + .1, 3, .06); slab.translate(0, -.12, 0); parts.push(slab);
   const sq = CELL - GAP;
-  // embossed honeycomb outline on every square
-  const ring = new THREE.Shape(), hole = new THREE.Path();
-  for (let k = 0; k <= 6; k++) {
-    const a = Math.PI / 3 * k + Math.PI / 6;
-    ring[k ? 'lineTo' : 'moveTo'](Math.cos(a) * .3, Math.sin(a) * .3);
-    hole[k ? 'lineTo' : 'moveTo'](Math.cos(a) * .235, Math.sin(a) * .235);
-  }
-  ring.holes.push(hole);
-  const hexRing = new THREE.ExtrudeGeometry(ring, { depth: .03, bevelEnabled: true, bevelThickness: .012, bevelSize: .01, bevelSegments: 2 });
-  hexRing.rotateX(-Math.PI / 2);
   for (let i = 0; i < COLS; i++) for (let j = 0; j < ROWS; j++) {
     const x = -W / 2 + CELL / 2 + i * CELL, z = -D / 2 + CELL / 2 + j * CELL;
     const b = new RoundedBoxGeometry(sq, .26, sq, 4, .1); b.translate(x, .1, z); parts.push(b);
-    const hex = hexRing.clone(); hex.translate(x, .228, z); parts.push(hex);
   }
   const barGeo = mergeGeometries(parts.map((g) => g.toNonIndexed()));
   barGeo.computeVertexNormals();
   const choc = new THREE.MeshPhysicalMaterial({ color: 0x24110a, roughness: .3, metalness: 0, clearcoat: .6, clearcoatRoughness: .28, sheen: .25, sheenColor: new THREE.Color(0x8a5a3a), sheenRoughness: .6 });
   const barMesh = new THREE.Mesh(barGeo, choc);
 
-  // sleeve: a cream paper band with a gold-bordered label on top
+  // wrapper: a cream paper band with a gold-bordered label on top
   await document.fonts?.load('500 64px "Bodoni Moda"').catch(() => {});
   const paper = new THREE.MeshStandardMaterial({ color: 0xe8dbc4, roughness: .85 });
   const label = new THREE.MeshStandardMaterial({ map: sleeveTexture(), roughness: .75 });
